@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.damien.rdvgeo.AcceuilActivity">
+
+    <item android:id="@+id/action_edit"
+        android:icon="@drawable/ic_send_demand"
+        android:title="Envoyer une demande"
+        app:showAsAction="never"></item>
+    <item android:id="@+id/action_add"
+        android:icon="@drawable/ic_send_demand"
+        android:title="ifRoom"
+        app:showAsAction="never"></item>
+    <item android:id="@+id/action_delete"
+        android:icon="@drawable/ic_send_demand"
+        android:title="Delete"
+        app:showAsAction="never"></item>
+</menu>
