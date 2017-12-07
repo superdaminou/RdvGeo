@@ -5,15 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
 
 
+    ListView mListRdv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mListRdv = (ListView) findViewById(R.id.listRdv);
+
+        afficherListRdv();
     }
 
     @Override
@@ -35,5 +44,23 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private List<RendezVous> genererRdv(){
+        List<RendezVous> rdvs = new ArrayList<RendezVous>();
+        rdvs.add(new RendezVous("Florent", "Mon premier tweet !"));
+        rdvs.add(new RendezVous("Anne", "Mon premier tweet !"));
+        rdvs.add(new RendezVous("Pat", "Mon premier tweet !"));
+        rdvs.add(new RendezVous("John", "Mon premier tweet !"));
+        return rdvs;
+    }
+
+    private void afficherListRdv(){
+        List<RendezVous> rdvs = genererRdv();
+
+        RendezVousAdapter adapter  = new RendezVousAdapter(MainActivity.this, rdvs);
+        mListRdv.setAdapter(adapter);
+
     }
 }
