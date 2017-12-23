@@ -5,24 +5,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity   {
 
 
-
+    TextView lieu;
     ListView mListRdv;
-
+    List<RendezVous> mesRdv= new ArrayList<RendezVous>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mListRdv = (ListView) findViewById(R.id.listRdv);
-
         afficherListRdv();
+        addOnClickListener();
+
+
     }
 
     @Override
@@ -57,10 +62,33 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void afficherListRdv(){
-        List<RendezVous> rdvs = genererRdv();
+        mListRdv = (ListView) findViewById(R.id.listRdv);
+        mesRdv = genererRdv();
 
-        RendezVousAdapter adapter  = new RendezVousAdapter(MainActivity.this, rdvs);
+        RendezVousAdapter adapter = new RendezVousAdapter(this, mesRdv);
         mListRdv.setAdapter(adapter);
 
     }
+
+    private void ouvrirCarte(){
+        Intent map= new Intent(this, MapsActivity.class);
+        startActivity(map);
+    }
+
+
+    private void addOnClickListener() {
+        mListRdv = (ListView) findViewById(R.id.listRdv);
+
+
+        mListRdv.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                View itemView = view;
+
+                ouvrirCarte();
+            }
+        });
+    }
 }
+
+

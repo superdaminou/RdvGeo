@@ -3,6 +3,6 @@
 
     <TextView android:id="@+id/nom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:textStyle="bold" tools:text="Pseudo" />
 
-    <TextView android:id="@+id/etat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:layout_alignLeft="@+id/nom" android:layout_below="@+id/nom" tools:text="Texte de mon tweet" />
 
+    <TextView android:id="@+id/etat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@android:color/black" android:layout_alignLeft="@+id/nom" android:layout_below="@+id/nom" tools:text="Texte de mon tweet" android:clickable="true"/>
 </RelativeLayout>

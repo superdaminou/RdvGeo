@@ -15,7 +15,7 @@ import java.util.List;
  * Created by damien on 07/12/2017.
  */
 
-public class RendezVousAdapter extends ArrayAdapter<RendezVous> {
+public class RendezVousAdapter extends ArrayAdapter<RendezVous>  {
 
         //tweets est la liste des models à afficher
         public RendezVousAdapter(Context context, List<RendezVous> rdvs) {
@@ -52,5 +52,7 @@ public class RendezVousAdapter extends ArrayAdapter<RendezVous> {
             public TextView etat;
 
         }
+
+
 
 }
