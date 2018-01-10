@@ -1,4 +1,4 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.entities;
 
 /**
  * Created by damien on 07/12/2017.

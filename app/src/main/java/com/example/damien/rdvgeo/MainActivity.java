@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.example.damien.rdvgeo.entities.RendezVous;
+
 public class MainActivity extends AppCompatActivity   {
 
 
