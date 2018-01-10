@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity   {
     TextView lieu;
     ListView mListRdv;
     List<RendezVous> mesRdv= new ArrayList<RendezVous>();
+    private Button mPasserelle = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,31 @@ public class MainActivity extends AppCompatActivity   {
         afficherListRdv();
         addOnClickListener();
 
+        mPasserelle = findViewById(R.id.contact);
+        mPasserelle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Le premier paramètre est le nom de l'activité actuelle
+                // Le second est le nom de l'activité de destination
+                Intent secondeActivite = new Intent(MainActivity.this, PageListeContact.class);
+
+                // Puis on lance l'intent !
+                startActivity(secondeActivite);
+            }
+        });
+
+        mPasserelle = findViewById(R.id.numero);
+        mPasserelle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Le premier paramètre est le nom de l'activité actuelle
+                // Le second est le nom de l'activité de destination
+                Intent secondeActivite = new Intent(MainActivity.this, PageNumero.class);
+
+                // Puis on lance l'intent !
+                startActivity(secondeActivite);
+            }
+        });
 
     }
 
@@ -88,7 +116,14 @@ public class MainActivity extends AppCompatActivity   {
                 ouvrirCarte();
             }
         });
+
+
+
+
+
     }
+
 }
+
 
 

@@ -38,7 +38,16 @@
         </activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps">
+        </activity>
+        <activity
+            android:name=".PageListeContact"
+            android:label="contact" >
+        </activity>
+        <activity
+            android:name=".PageNumero"
+            android:label="numero" >
+        </activity>
     </application>
 
 </manifest>
