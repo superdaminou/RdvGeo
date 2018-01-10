@@ -1,13 +1,13 @@
 package com.example.damien.rdvgeo;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class RendezVousAdapter extends ArrayAdapter<RendezVous>  {
                 convertView.setTag(viewHolder);
             }
 
-            //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
+            //getItem(position) va récupérer l'item [position] de la List<RendezVous> rendezvous
             RendezVous rdv = getItem(position);
 
             //il ne reste plus qu'à remplir notre vue
