@@ -1,6 +1,9 @@
 package com.example.damien.rdvgeo;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +19,7 @@ import java.util.List;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.example.damien.rdvgeo.entities.RendezVous;
+import com.example.damien.rdvgeo.entities.User;
 
 public class MainActivity extends AppCompatActivity   {
 
@@ -25,12 +29,21 @@ public class MainActivity extends AppCompatActivity   {
     List<RendezVous> mesRdv= new ArrayList<RendezVous>();
     private Button mPasserelle = null;
 
+    MySQLiteHelper mySQLiteHelper;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
+
+        mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
+                RdvGeoContract.CONSTANT.TABLE_VERSION);
+
+        User test = new User("test");
+        test.createUser(MainActivity.this, 1, test.getUsername());
 
         mPasserelle = findViewById(R.id.contact);
         mPasserelle.setOnClickListener(new View.OnClickListener() {

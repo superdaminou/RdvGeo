@@ -11,9 +11,9 @@ public final class RdvGeoContract {
     private RdvGeoContract(){};
 
 
-    public static class User implements BaseColumns{
-        public static final String TABLE_USER= "user";
-        public static final String COLUMN_USERNAME ="username";
+    public static class CONSTANT implements BaseColumns{
+        public static final String DATABASE_NAME= "rdvgeo.db";
+        public static final int TABLE_VERSION =  1 ;
 
     }
 

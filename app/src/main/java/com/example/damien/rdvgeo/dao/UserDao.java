@@ -1,6 +1,9 @@
 package com.example.damien.rdvgeo.dao;
 
 
+import android.content.ContentValues;
+import android.content.Context;
+
 import com.example.damien.rdvgeo.entities.User;
 
 /**
@@ -22,8 +25,18 @@ public class UserDao extends DaoBase {
 
     public static final String TABLE_DROP =  "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
-    public void addRUser(String username){
+    public UserDao(){
+        super();
+    }
+    public UserDao(Context context){
+        super(context);
+    }
 
+    public void addUser(int id, String username){
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("username", username);
+        insert(User.class, values);
     }
 
     public void deleteUser(){
