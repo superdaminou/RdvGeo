@@ -34,7 +34,7 @@ public class RendezVous {
 
     public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, Date date){
         RendezVousDao dao = new RendezVousDao(context);
-        dao.addRendezvous(1, nom, coordonneeX, coordonneeY, date);
+        dao.addRendezvous( nom, coordonneeX, coordonneeY, date);
     }
 
     public static List<RendezVous> getAll(Context context){

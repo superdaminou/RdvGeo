@@ -24,6 +24,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             UserDao.KEY+ " INTEGER PRIMARY KEY," +
             UserDao.USERNAME+" TEXT )";
 
+    private static final String DROP_TABLE = " drop table "+
+            UserDao.TABLE_NAME +
+            ','+
+            RendezVousDao.TABLE_NAME;
+
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -45,7 +50,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + UserDao.TABLE_NAME + RendezVousDao.TABLE_NAME);
+        db.execSQL("DROP TABLE  " + UserDao.TABLE_NAME);
+        db.execSQL("DROP TABLE  "+ RendezVousDao.TABLE_NAME);
         onCreate(db);
     }
 

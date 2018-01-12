@@ -6,6 +6,7 @@ import android.database.Cursor;
 
 import com.example.damien.rdvgeo.entities.RendezVous;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,7 +45,7 @@ public class RendezVousDao extends DaoBase{
 
     public RendezVousDao(Context context){super((context));}
 
-    public void addRendezvous(int id, String nom, double coordx, double coordy, Date date){
+    public void addRendezvous(String nom, double coordx, double coordy, Date date){
         ContentValues values = new ContentValues();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dateS = sdf.format(new Date());
@@ -52,7 +53,7 @@ public class RendezVousDao extends DaoBase{
         values.put(COORDX, coordx);
         values.put(COORDY, coordy);
         values.put(DATERDV,dateS);
-        //insert(RendezVous.class, values);
+        insert(RendezVous.class, values);
     }
 
     public void deleteRendezvous(Long id){
@@ -64,6 +65,8 @@ public class RendezVousDao extends DaoBase{
     }
 
     public List<RendezVous> getAllRdv(){
+        DateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat targetFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         List<String> allColumns = new ArrayList<String>();
         allColumns.add(KEY);
@@ -81,11 +84,12 @@ public class RendezVousDao extends DaoBase{
                         cursor.getString(1),
                         cursor.getDouble(2),
                         cursor.getDouble(3),
-                        (new SimpleDateFormat("dd-MM-yyyy ").parse(cursor.getString(4))));
+                        (originalFormat.parse(cursor.getString(4))));
                 rdvs.add(u);
                 cursor.moveToNext();
 
             }catch (ParseException e){
+                cursor.moveToNext();
             }
         }
         // assurez-vous de la fermeture du curseur

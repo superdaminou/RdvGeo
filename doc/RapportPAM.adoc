@@ -7,9 +7,18 @@ Damien Le Garrecs,  Nicolas Pietraru
 
 L'application de rendez vous gelolocalisé offre  plusieurs possibilité:
 
-* *L'affichage des Rendez vous* qui permt de visualiser la liste de tout
+* *L'affichage des Rendez vous* qui permet de visualiser la liste de tout
 les rendez vous programmer avec la date.
 * *La visualisation sur googleMap du rendez vous* permettant
 d'ouvir une googleMap au coordonnées du rendez vous
+* *La reception d'un rendezvous* envoyé par un autre utilisateur
+* *L'acceptation d'un rendezvous* reçu
+* *L'envoie d'un rendezvous* avec la position actuelle ou renseigné ainsi qu'une date.
 
 == Architecture
+
+L'architecture est decomponsé en 4 package specalisé :
+
+* *Les activities* qui assure la gestion de l'interface
+* *Les entities* qui sont tout les objet utilsés dans l'application
+* *Les DAO* qui assure l'abstraction entre la base de données et le metier
