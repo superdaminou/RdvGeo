@@ -1,14 +1,9 @@
-xpackage com.example.damien.rdvgeo;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.provider.SyncStateContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -21,15 +16,21 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.damien.rdvgeo.entities.RendezVous;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.damien.rdvgeo.MapsActivity;
+import com.example.damien.rdvgeo.MySQLiteHelper;
+import com.example.damien.rdvgeo.PageListeContact;
+import com.example.damien.rdvgeo.PageNumero;
+import com.example.damien.rdvgeo.R;
+import com.example.damien.rdvgeo.RdvGeoContract;
+import com.example.damien.rdvgeo.RendezVousAdapter;
 import com.example.damien.rdvgeo.entities.RendezVous;
 import com.example.damien.rdvgeo.entities.User;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity   {
+
+public class MainActivity extends AppCompatActivity {
 
 
 
