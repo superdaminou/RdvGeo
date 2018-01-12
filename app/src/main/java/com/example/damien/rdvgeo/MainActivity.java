@@ -148,8 +148,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void ouvrirCarte() {
+    private void ouvrirCarte(RendezVous rdv) {
         Intent map = new Intent(this, MapsActivity.class);
+        map.putExtra("lat", rdv.getCoordonneeX());
+        map.putExtra("longi",rdv.getCoordonneeY());
         startActivity(map);
     }
 
@@ -162,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 View itemView = view;
-
-                ouvrirCarte();
+                RendezVous rdv = (RendezVous) parent.getAdapter().getItem(position);
+                ouvrirCarte(rdv);
             }
         });
 

@@ -47,7 +47,7 @@ public class RendezVousDao extends DaoBase{
         values.put(COORDX, coordx);
         values.put(COORDY, coordy);
         values.put(ETAT,etat);
-        insert(RendezVous.class, values);
+        //insert(RendezVous.class, values);
     }
 
     public void deleteRendezvous(Long id){
