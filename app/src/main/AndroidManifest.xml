@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -38,16 +40,19 @@
         </activity>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".PageListeContact"
-            android:label="contact" >
-        </activity>
+            android:label="contact"></activity>
         <activity
             android:name=".PageNumero"
-            android:label="numero" >
-        </activity>
+            android:label="numero"></activity>
+        <activity android:name=".SmsSend" />
+        <activity
+            android:name=".Notifications"
+            android:label="notification"></activity>
+
+        <receiver android:name=".SmsReceive" />
     </application>
 
 </manifest>

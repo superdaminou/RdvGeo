@@ -16,10 +16,11 @@ public abstract class DaoBase {
     protected final static String NOM = "RDVGEO.db";
 
     protected SQLiteDatabase mDb = null;
-    protected MySQLiteHelper helper= null;
+    protected MySQLiteHelper helper = null;
 
-    public DaoBase(){
+    public DaoBase() {
     }
+
     public DaoBase(Context pContext) {
         this.helper = new MySQLiteHelper(pContext, NOM, null, VERSION);
     }

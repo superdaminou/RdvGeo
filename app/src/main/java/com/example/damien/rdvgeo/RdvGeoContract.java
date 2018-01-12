@@ -8,12 +8,15 @@ import android.provider.BaseColumns;
 
 public final class RdvGeoContract {
 
-    private RdvGeoContract(){};
+    private RdvGeoContract() {
+    }
+
+    ;
 
 
-    public static class User implements BaseColumns{
-        public static final String TABLE_USER= "user";
-        public static final String COLUMN_USERNAME ="username";
+    public static class User implements BaseColumns {
+        public static final String TABLE_USER = "user";
+        public static final String COLUMN_USERNAME = "username";
 
     }
 

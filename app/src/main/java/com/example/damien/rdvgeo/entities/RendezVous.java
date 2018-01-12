@@ -12,21 +12,19 @@ public class RendezVous {
     private String etat;
 
 
-    public RendezVous(){
+    public RendezVous() {
 
     }
 
-    public RendezVous(String nom, String etat){
+    public RendezVous(String nom, String etat) {
         setNom(nom);
         setEtat(etat);
 
     }
 
-    public RendezVous(String nom, double[]coordonnee, String etat){
+    public RendezVous(String nom, double[] coordonnee, String etat) {
 
     }
-
-
 
 
     public String getNom() {

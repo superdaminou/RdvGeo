@@ -8,23 +8,16 @@ import android.util.Log;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
 
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "RdvGeo.db";
     public static final String TABLE_COMMENTS = "comments";
-
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_COMMENT = "comment";
-
-
-
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "RdvGeo.db";
     // Commande sql pour la création de la base de données
     private static final String DATABASE_CREATE = "create table if not exist "
-            + RdvGeoContract.User.TABLE_USER+ "(" +
+            + RdvGeoContract.User.TABLE_USER + "(" +
             RdvGeoContract.User._ID + " INTEGER PRIMARY KEY," +
-            RdvGeoContract.User.COLUMN_USERNAME +" TEXT )";
-
-
-
+            RdvGeoContract.User.COLUMN_USERNAME + " TEXT )";
 
 
     public MySQLiteHelper(Context context) {
