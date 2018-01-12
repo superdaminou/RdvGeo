@@ -1,7 +1,9 @@
 package com.example.damien.rdvgeo.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 
 import com.example.damien.rdvgeo.MySQLiteHelper;
 
@@ -25,6 +27,7 @@ public abstract class DaoBase {
         this.helper = new MySQLiteHelper(pContext, NOM, null, VERSION);
     }
 
+
     public SQLiteDatabase open() {
         // Pas besoin de fermer la dernière base puisque getWritableDatabase s'en charge
         mDb = helper.getWritableDatabase();
@@ -38,5 +41,25 @@ public abstract class DaoBase {
     public SQLiteDatabase getDb() {
         return mDb;
     }
+
+    private SQLiteDatabase getReadDB(){
+        return helper.getReadableDatabase();
+    }
+
+    private SQLiteDatabase getWriteDB(){
+        return helper.getWritableDatabase();
+    }
+
+    public void insert(Class clazz, ContentValues values) {
+        SQLiteDatabase db = open();
+        db.insert(
+                clazz.getName(),
+                null,
+                values
+        );
+        db.close();
+    }
+
+
 }
 

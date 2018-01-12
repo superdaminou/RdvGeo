@@ -1,10 +1,14 @@
-package com.example.damien.rdvgeo;
+xpackage com.example.damien.rdvgeo;
 
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.provider.SyncStateContract;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -21,8 +25,12 @@ import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.damien.rdvgeo.entities.RendezVous;
+import com.example.damien.rdvgeo.entities.User;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity   {
+
 
 
     TextView lieu;
@@ -35,12 +43,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    MySQLiteHelper mySQLiteHelper;
+    private SQLiteDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
+
+        mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
+                RdvGeoContract.CONSTANT.TABLE_VERSION);
+
+        User test = new User("test");
+        test.createUser(MainActivity.this, 1, test.getUsername());
 
         mPasserelle = findViewById(R.id.contact);
         mPasserelle.setOnClickListener(new View.OnClickListener() {

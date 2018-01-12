@@ -1,9 +1,14 @@
 package com.example.damien.rdvgeo;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.example.damien.rdvgeo.dao.UserDao;
+
+import java.util.ArrayList;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
@@ -14,10 +19,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "RdvGeo.db";
     // Commande sql pour la création de la base de données
-    private static final String DATABASE_CREATE = "create table if not exist "
-            + RdvGeoContract.User.TABLE_USER + "(" +
-            RdvGeoContract.User._ID + " INTEGER PRIMARY KEY," +
-            RdvGeoContract.User.COLUMN_USERNAME + " TEXT )";
+
+    private static final String DATABASE_CREATE = "create table  "
+            + UserDao.TABLE_NAME+ "(" +
+            UserDao.KEY+ " INTEGER PRIMARY KEY," +
+            UserDao.USERNAME+" TEXT )";
 
 
     public MySQLiteHelper(Context context) {
@@ -41,4 +47,5 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
         onCreate(db);
     }
+
 }
