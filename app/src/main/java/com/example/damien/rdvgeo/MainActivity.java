@@ -29,6 +29,7 @@ import com.example.damien.rdvgeo.entities.RendezVous;
 import com.example.damien.rdvgeo.entities.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mySQLiteHelper = new MySQLiteHelper(this);
 
         RendezVous rdv = new RendezVous();
-        rdv.createRdv(this, "test", 1.2, 1.3, "test");
+        rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12));
 
         setContentView(R.layout.activity_main);
         afficherListRdv();
@@ -129,15 +130,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    private List<RendezVous> genererRdv() {
-        List<RendezVous> rdvs = new ArrayList<RendezVous>();
-        rdvs.add(new RendezVous("Florent", "Mon premier tweet !"));
-        rdvs.add(new RendezVous("Anne", "Mon premier tweet !"));
-        rdvs.add(new RendezVous("Pat", "Mon premier tweet !"));
-        rdvs.add(new RendezVous("John", "Mon premier tweet !"));
-        return rdvs;
-    }
 
     private void afficherListRdv() {
         mListRdv = (ListView) findViewById(R.id.listRdv);

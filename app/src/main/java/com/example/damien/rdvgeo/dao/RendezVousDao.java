@@ -6,11 +6,13 @@ import android.database.Cursor;
 
 import com.example.damien.rdvgeo.entities.RendezVous;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
+import java.util.Locale;
+import java.util.logging.Logger;
 
 /**
  * Created by damien on 07/12/2017.
@@ -23,7 +25,8 @@ public class RendezVousDao extends DaoBase{
     public static final String NAME ="name";
     public static final String COORDX = "coordX";
     public static final String COORDY = "coordY";
-    public static final String ETAT = "etat";
+    public static final String DATERDV = "daterdv";
+
 
     public static final String TABLE_CREATE = "CREATE TABLE " +
             TABLE_NAME + " (" +
@@ -31,7 +34,7 @@ public class RendezVousDao extends DaoBase{
             NAME + " TEXT," +
             COORDX + " REAL, " +
             COORDY + " REAL, " +
-            ETAT + " Text " +
+            DATERDV + " TEXT " +
             ") ";
 
     public static final String TABLE_DROP =  "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
@@ -41,12 +44,14 @@ public class RendezVousDao extends DaoBase{
 
     public RendezVousDao(Context context){super((context));}
 
-    public void addRendezvous(int id, String nom, double coordx, double coordy, String etat){
+    public void addRendezvous(int id, String nom, double coordx, double coordy, Date date){
         ContentValues values = new ContentValues();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String dateS = sdf.format(new Date());
         values.put(NAME, nom);
         values.put(COORDX, coordx);
         values.put(COORDY, coordy);
-        values.put(ETAT,etat);
+        values.put(DATERDV,dateS);
         //insert(RendezVous.class, values);
     }
 
@@ -65,26 +70,26 @@ public class RendezVousDao extends DaoBase{
         allColumns.add(NAME);
         allColumns.add(COORDX);
         allColumns.add(COORDY);
-        allColumns.add(ETAT);
+        allColumns.add(DATERDV);
 
         List<RendezVous> rdvs = new ArrayList<RendezVous>();
         Cursor cursor = getAll(TABLE_NAME, allColumns.toArray(new String[0]) );
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            RendezVous u  = new RendezVous(
-                    cursor.getString(1),
-                    cursor.getDouble(2),
-                    cursor.getDouble(3),
-                    cursor.getString(4)
-            );
-            rdvs.add(u);
-            cursor.moveToNext();
+            try{
+                RendezVous u  = new RendezVous(
+                        cursor.getString(1),
+                        cursor.getDouble(2),
+                        cursor.getDouble(3),
+                        (new SimpleDateFormat("dd-MM-yyyy ").parse(cursor.getString(4))));
+                rdvs.add(u);
+                cursor.moveToNext();
+
+            }catch (ParseException e){
+            }
         }
         // assurez-vous de la fermeture du curseur
         cursor.close();
         return rdvs;
-    }
-    public static RendezVous getRendezvous(){
-        return new RendezVous("yolo", "yolo");
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.damien.rdvgeo.dao.RendezVousDao;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,29 +17,24 @@ public class RendezVous {
     private String nom;
     private double coordonneeX;
     private double coordonneeY;
-    private String etat;
+    private Date date;
 
 
     public RendezVous() {
 
     }
 
-    public RendezVous(String nom, String etat) {
-        setNom(nom);
-        setEtat(etat);
 
-    }
-
-    public RendezVous(String nom, double coordonneeX, double coordonneeY, String etat) {
+    public RendezVous(String nom, double coordonneeX, double coordonneeY, Date date) {
         setNom(nom);
         setCoordonneeX(coordonneeX);
         setCoordonneeY(coordonneeY);
-        setEtat(etat);
+        setDate(date);
     }
 
-    public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, String etat){
+    public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, Date date){
         RendezVousDao dao = new RendezVousDao(context);
-        dao.addRendezvous(1, nom, coordonneeX, coordonneeY, etat);
+        dao.addRendezvous(1, nom, coordonneeX, coordonneeY, date);
     }
 
     public static List<RendezVous> getAll(Context context){
@@ -70,12 +66,12 @@ public class RendezVous {
         this.coordonneeX = coordonnee;
     }
 
-    public String getEtat() {
-        return etat;
+    public Date getDate() {
+        return date;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 
