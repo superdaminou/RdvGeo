@@ -1,5 +1,7 @@
 package com.example.damien.rdvgeo.dao;
 
+import android.content.ContentValues;
+
 import com.example.damien.rdvgeo.entities.RendezVous;
 
 /**
@@ -26,8 +28,14 @@ public class RendezVousDao extends DaoBase{
 
     public static final String TABLE_DROP =  "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
 
-    public void addRendezvous(String username){
-
+    public void addRendezvous(int id, String nom, String coordx, String coordy, String etat){
+        ContentValues values = new ContentValues();
+        values.put("id", id);
+        values.put("nom", nom);
+        values.put("coordx", coordx);
+        values.put("coordy", coordy);
+        values.put("etat",etat);
+        insert(RendezVous.class, values);
     }
 
     public void deleteRendezvous(){
