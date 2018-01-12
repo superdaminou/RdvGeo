@@ -8,8 +8,10 @@ import android.provider.BaseColumns;
 
 public final class RdvGeoContract {
 
-    private RdvGeoContract(){};
+    private RdvGeoContract() {
+    }
 
+    ;
 
     public static class CONSTANT implements BaseColumns{
         public static final String DATABASE_NAME= "rdvgeo.db";

@@ -5,4 +5,9 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="mapKey">AIzaSyC_oOpbXn3aHlWmFpRizv2I60mWezdhetU</string>
     <string name="title_activity_maps">Map</string>
+    <string name="add_notification">Ajouter une notification</string>
+    <string name="delete_notification">Supprimer une notification</string>
+    <string name="notification">Notification www.tutos-android.com</string>
+    <string name="notification_title">Ma première notification</string>
+    <string name="notification_desc">Cliquez sur moi je suis une notification</string>
 </resources>

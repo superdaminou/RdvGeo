@@ -13,23 +13,17 @@ import java.util.ArrayList;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
 
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "RdvGeo.db";
     public static final String TABLE_COMMENTS = "comments";
-
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_COMMENT = "comment";
-
-
-
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "RdvGeo.db";
     // Commande sql pour la création de la base de données
+
     private static final String DATABASE_CREATE = "create table  "
             + UserDao.TABLE_NAME+ "(" +
             UserDao.KEY+ " INTEGER PRIMARY KEY," +
             UserDao.USERNAME+" TEXT )";
-
-
-
 
 
     public MySQLiteHelper(Context context) {
