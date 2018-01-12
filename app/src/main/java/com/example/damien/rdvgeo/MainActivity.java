@@ -1,3 +1,5 @@
+package com.example.damien.rdvgeo;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -40,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mPasserelle = null;
     private Button addNotificationBtn;
     private Button deleteNotificationBtn;
-    public static final int NOTIFICATION_ID = 42;
-
-
-
     MySQLiteHelper mySQLiteHelper;
     private SQLiteDatabase db;
 
@@ -91,8 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View arg0) {
-                createNotification();
-                Toast.makeText(getBaseContext(), "Ajout d'une notification", Toast.LENGTH_SHORT).show();
+                Intent secondeActivite = new Intent(MainActivity.this, Notifications.class);
+
+                // Puis on lance l'intent !
+                startActivity(secondeActivite);
+                //Toast.makeText(getBaseContext(), "Ajout d'une notification", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -154,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void addOnClickListener() {
-        mListRdv = (ListView) findViewById(R.id.listRdv);
+        mListRdv = findViewById(R.id.listRdv);
 
 
         mListRdv.setOnItemClickListener(new OnItemClickListener() {
@@ -169,7 +170,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private final void createNotification() {
+    public static final int NOTIFICATION_ID = 42;
+
+    public void createNotification() {
         //Récupération du notification Manager
         final NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -179,14 +182,13 @@ public class MainActivity extends AppCompatActivity {
         Notification.Builder builder = new Notification.Builder(this)
                 .setWhen(System.currentTimeMillis())
                 //.setTicker(notificationTitle)
-                .setSmallIcon(R.drawable.notification)
+                //.setSmallIcon(R.drawable.notification)
                 .setContentTitle(getResources().getString(R.string.notification_title))
                 .setContentText(getResources().getString(R.string.notification_desc))
                 .setContentIntent(pendingIntent);
 
         notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
-
 }
 
 
