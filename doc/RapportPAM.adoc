@@ -1,0 +1,15 @@
+= Projet Android
+
+Damien Le Garrecs,  Nicolas Pietraru
+
+
+== Presentation
+
+L'application de rendez vous gelolocalisé offre  plusieurs possibilité:
+
+* *L'affichage des Rendez vous* qui permt de visualiser la liste de tout
+les rendez vous programmer avec la date.
+* *La visualisation sur googleMap du rendez vous* permettant
+d'ouvir une googleMap au coordonnées du rendez vous
+
+== Architecture
