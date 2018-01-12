@@ -2,10 +2,14 @@ package com.example.damien.rdvgeo.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabaseLockedException;
 
 import com.example.damien.rdvgeo.MySQLiteHelper;
+
+import java.io.ObjectStreamException;
 
 /**
  * Created by damien on 10/01/2018.
@@ -13,7 +17,7 @@ import com.example.damien.rdvgeo.MySQLiteHelper;
 
 public abstract class DaoBase {
 
-    protected final static int VERSION = 1;
+    protected final static int VERSION = 2;
     // Le nom du fichier qui représente ma base
     protected final static String NOM = "RDVGEO.db";
 
@@ -53,13 +57,23 @@ public abstract class DaoBase {
     public void insert(Class clazz, ContentValues values) {
         SQLiteDatabase db = open();
         db.insert(
-                clazz.getName(),
+                clazz.getSimpleName(),
                 null,
                 values
         );
         db.close();
     }
 
+    public void delete(Class clazz, Long id ){
+        mDb.delete(clazz.getSimpleName(), "id = ?", new String[] {String.valueOf(id)});
+    }
+
+    public Cursor getAll(String table, String[] column  ){
+        SQLiteDatabase db = getReadDB();
+        return db.query(table,
+                column, null, null, null, null, null);
+
+    }
 
 }
 

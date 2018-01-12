@@ -1,5 +1,11 @@
 package com.example.damien.rdvgeo.entities;
 
+import android.content.Context;
+
+import com.example.damien.rdvgeo.dao.RendezVousDao;
+
+import java.util.List;
+
 /**
  * Created by damien on 07/12/2017.
  */
@@ -8,7 +14,8 @@ public class RendezVous {
 
 
     private String nom;
-    private double[] coordonnee;
+    private double coordonneeX;
+    private double coordonneeY;
     private String etat;
 
 
@@ -22,10 +29,22 @@ public class RendezVous {
 
     }
 
-    public RendezVous(String nom, double[] coordonnee, String etat) {
-
+    public RendezVous(String nom, double coordonneeX, double coordonneeY, String etat) {
+        setNom(nom);
+        setCoordonneeX(coordonneeX);
+        setCoordonneeY(coordonneeY);
+        setEtat(etat);
     }
 
+    public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, String etat){
+        RendezVousDao dao = new RendezVousDao(context);
+        dao.addRendezvous(1, nom, coordonneeX, coordonneeY, etat);
+    }
+
+    public static List<RendezVous> getAll(Context context){
+        RendezVousDao dao = new RendezVousDao(context);
+        return dao.getAllRdv();
+    }
 
     public String getNom() {
         return nom;
@@ -35,12 +54,20 @@ public class RendezVous {
         this.nom = nom;
     }
 
-    public double[] getCoordonnee() {
-        return coordonnee;
+    public double getCoordonneeY() {
+        return coordonneeY;
     }
 
-    public void setCoordonnee(double[] coordonnee) {
-        this.coordonnee = coordonnee;
+    public void setCoordonneeY(double coordonnee) {
+        this.coordonneeY = coordonnee;
+    }
+
+    public double getCoordonneeX() {
+        return coordonneeX;
+    }
+
+    public void setCoordonneeX(double coordonnee) {
+        this.coordonneeX = coordonnee;
     }
 
     public String getEtat() {

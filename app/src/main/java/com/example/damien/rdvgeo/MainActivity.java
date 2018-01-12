@@ -48,15 +48,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mySQLiteHelper = new MySQLiteHelper(this);
+
+        RendezVous rdv = new RendezVous();
+        rdv.createRdv(this, "test", 1.2, 1.3, "test");
+
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
-
-        mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
-                RdvGeoContract.CONSTANT.TABLE_VERSION);
-
-        User test = new User("test");
-        test.createUser(MainActivity.this, 1, test.getUsername());
 
         mPasserelle = findViewById(R.id.contact);
         mPasserelle.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void afficherListRdv() {
         mListRdv = (ListView) findViewById(R.id.listRdv);
-        mesRdv = genererRdv();
+        mesRdv =RendezVous.getAll(this);
 
         RendezVousAdapter adapter = new RendezVousAdapter(this, mesRdv);
         mListRdv.setAdapter(adapter);
