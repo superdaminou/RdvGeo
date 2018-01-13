@@ -13,6 +13,12 @@
         android:hint="Numero"
         android:inputType="phone"/>
 
+    <Button
+        android:id="@+id/contacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contacts"/>
+
     <EditText
         android:id="@+id/lat"
         android:layout_width="wrap_content"
