@@ -52,7 +52,7 @@ public class SmsReceiveService extends BroadcastReceiver {
         Intent i = new Intent(context, NotificationActivity.class);
         i.putExtra("titreNotification", titreNotification);
         i.putExtra("texteNotification", texteNotification);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i , 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i , PendingIntent.FLAG_UPDATE_CURRENT);
         //On définit le titre de la notification
         //titreNotification = "C'est moi la notification !";
         //On définit le texte qui caractérise la notification

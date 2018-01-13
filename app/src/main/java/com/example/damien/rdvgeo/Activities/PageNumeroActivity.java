@@ -85,7 +85,7 @@ public class PageNumeroActivity extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 df = new SimpleDateFormat("dd/MM/YYYY");
+                 df = new SimpleDateFormat("dd-MM-YYYY");
 
 
 
