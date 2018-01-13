@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.damien.rdvgeo.R;
+import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.Service.SmsReceiveService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 
@@ -20,7 +21,6 @@ import java.util.Date;
 public class NotificationActivity extends Activity {
 
     TextView nomNotif;
-    TextView prenomNotif;
     TextView dateNotif;
     TextView lieuNotif;
 
@@ -30,17 +30,14 @@ public class NotificationActivity extends Activity {
         setContentView(R.layout.notifications);
 
         nomNotif = findViewById(R.id.nomNotif);
-        prenomNotif = findViewById(R.id.prenomNotif);
         dateNotif = findViewById(R.id.dateNotif);
         lieuNotif = findViewById(R.id.lieuNotif);
 
         Intent i = getIntent();
         Bundle bundle = i.getExtras();
-        String message = bundle.getString("texteNotification");
+        final String message = bundle.getString("texteNotification");
 
-
-
-        RendezVous rdv = getRendezVousFromNotif(message);
+        final RendezVous rdv = getRendezVousFromNotif(message);
 
 
         //On supprime la notification de la liste de notification comme dans la méthode cancelNotify de l'Activity principale
@@ -48,7 +45,7 @@ public class NotificationActivity extends Activity {
         notificationManager.cancel(SmsReceiveService.ID_NOTIFICATION);
 
         //On affiche les données de la notif
-        nomNotif.setText("");
+        nomNotif.setText(rdv.getNom().toString());
 
         // On récupère nos deux boutons créés en XML grâce à leur id
         Button boutonAcceptNotif = findViewById(R.id.AcceptNotif);
@@ -64,8 +61,8 @@ public class NotificationActivity extends Activity {
         //On applique un écouteur d'évènement à notre bouton "Supprimer la notification"
         boutonClearNotif.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               //TODO
-
+               //L'utilisateur refuse le rdv on renvoi un message d'annulation
+                retourNotif(rdv.getNom().toString(),"Non", message);
             }
         });
 
@@ -88,5 +85,16 @@ public class NotificationActivity extends Activity {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void retourNotif(String nom, String notif, String message){
+        String[] id =  message.split("/");
+        String retour = id[0]+"/"+notif;
+
+
+        Intent smsActivite = new Intent(this, SmsSendService.class);
+        smsActivite.putExtra("num", nom);
+        smsActivite.putExtra("message", retour);
+        startService(smsActivite);
     }
 }
