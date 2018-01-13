@@ -18,6 +18,7 @@ public class RendezVous {
     private double coordonneeX;
     private double coordonneeY;
     private Date date;
+    private String etat;
 
 
     public RendezVous() {
@@ -25,16 +26,17 @@ public class RendezVous {
     }
 
 
-    public RendezVous(String nom, double coordonneeX, double coordonneeY, Date date) {
+    public RendezVous(String nom, double coordonneeX, double coordonneeY, Date date, String etat) {
         setNom(nom);
         setCoordonneeX(coordonneeX);
         setCoordonneeY(coordonneeY);
         setDate(date);
+
     }
 
-    public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, Date date){
+    public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, Date date, String etat){
         RendezVousDao dao = new RendezVousDao(context);
-        dao.addRendezvous( nom, coordonneeX, coordonneeY, date);
+        dao.addRendezvous( nom, coordonneeX, coordonneeY, date, etat);
     }
 
     public static List<RendezVous> getAll(Context context){
@@ -73,6 +75,10 @@ public class RendezVous {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public String getEtat(){return etat;}
+
+    public void setEtat(String etat){this.etat= etat;}
 
 
 }

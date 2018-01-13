@@ -27,7 +27,7 @@ public class RendezVousDao extends DaoBase{
     public static final String COORDX = "coordX";
     public static final String COORDY = "coordY";
     public static final String DATERDV = "daterdv";
-
+    public static final String ETAT = "etat";
 
     public static final String TABLE_CREATE = "CREATE TABLE " +
             TABLE_NAME + " (" +
@@ -36,6 +36,7 @@ public class RendezVousDao extends DaoBase{
             COORDX + " REAL, " +
             COORDY + " REAL, " +
             DATERDV + " TEXT " +
+            ETAT + " TEXT" +
             ") ";
 
     public static final String TABLE_DROP =  "DROP TABLE IF EXISTS " + TABLE_NAME + ";";
@@ -45,7 +46,7 @@ public class RendezVousDao extends DaoBase{
 
     public RendezVousDao(Context context){super((context));}
 
-    public void addRendezvous(String nom, double coordx, double coordy, Date date){
+    public void addRendezvous(String nom, double coordx, double coordy, Date date, String etat){
         ContentValues values = new ContentValues();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dateS = sdf.format(new Date());
@@ -53,6 +54,7 @@ public class RendezVousDao extends DaoBase{
         values.put(COORDX, coordx);
         values.put(COORDY, coordy);
         values.put(DATERDV,dateS);
+        values.put(ETAT,etat);
         insert(RendezVous.class, values);
     }
 
@@ -74,6 +76,7 @@ public class RendezVousDao extends DaoBase{
         allColumns.add(COORDX);
         allColumns.add(COORDY);
         allColumns.add(DATERDV);
+        allColumns.add(ETAT);
 
         List<RendezVous> rdvs = new ArrayList<RendezVous>();
         Cursor cursor = getAll(TABLE_NAME, allColumns.toArray(new String[0]) );
@@ -84,7 +87,8 @@ public class RendezVousDao extends DaoBase{
                         cursor.getString(1),
                         cursor.getDouble(2),
                         cursor.getDouble(3),
-                        (originalFormat.parse(cursor.getString(4))));
+                        (originalFormat.parse(cursor.getString(4))),
+                        cursor.getString(5));
                 rdvs.add(u);
                 cursor.moveToNext();
 

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mySQLiteHelper = new MySQLiteHelper(this);
 
         RendezVous rdv = new RendezVous();
-        rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12));
+        rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12), "en attente");
 
         setContentView(R.layout.activity_main);
         afficherListRdv();
