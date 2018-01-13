@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         mySQLiteHelper = new MySQLiteHelper(this);
 
-        valoService.valorisationRdv(this);
+        //valoService.valorisationRdv(this);
 
         setContentView(R.layout.activity_main);
         afficherListRdv();

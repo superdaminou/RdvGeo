@@ -92,9 +92,9 @@ public class PageNumeroActivity extends AppCompatActivity {
 
 
 
-                if (numero.getText() != null && dateRdv.getText() != null && lat.getText() != null && longi.getText()!= null){
+                if (numero.getText() != null && !dateRdv.getText().toString().isEmpty()&& !lat.getText().toString().isEmpty()&& !longi.getText().toString().isEmpty()){
 
-                    if(numero.getText().length()==6){
+                    if(numero.getText().length()==10){
                         sendToOne(numero.getText().toString(), lat.getText().toString(), longi.getText().toString(), dateRdv.getText().toString());
                     }else{
                         for(String numero : listContatcs){
