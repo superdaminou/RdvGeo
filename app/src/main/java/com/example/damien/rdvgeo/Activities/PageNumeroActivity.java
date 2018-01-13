@@ -92,7 +92,6 @@ public class PageNumeroActivity extends AppCompatActivity {
                 if (numero.getText() != null && !dateRdv.getText().toString().isEmpty()&& !lat.getText().toString().isEmpty()&& !longi.getText().toString().isEmpty()){
 
                     if(numero.getText().length()>=3){
-                        Log.d("Log:","JE suis la ");
                         sendToOne(numero.getText().toString(), lat.getText().toString(), longi.getText().toString(), dateRdv.getText().toString());
                     }else{
                         for(String numero : listContatcs){
@@ -165,7 +164,6 @@ public class PageNumeroActivity extends AppCompatActivity {
     }
 
     public void sendToOne(String numero, String lat, String longi, String date){
-        Log.d("Envoyer:","Avant le try");
         try{
             Date myDate = df.parse(date);
             RendezVous rdv= new RendezVous(numero,
@@ -179,7 +177,7 @@ public class PageNumeroActivity extends AppCompatActivity {
             String message = new String();
             message = id.toString()+"/"+numero +"/"+lat+"/"+longi+"/"+date+"/";
 
-            Log.d("Envoyer:","j'envoi le sms");
+
             Intent smsActivite = new Intent(this, SmsSendService.class);
             smsActivite.putExtra("num", getMyPhoneNO());
             smsActivite.putExtra("message", message);
