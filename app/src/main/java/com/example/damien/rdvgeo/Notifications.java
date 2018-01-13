@@ -1,23 +1,37 @@
 package com.example.damien.rdvgeo;
 
 import android.app.Activity;
+import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class Notifications extends Activity {
+public class Notifications extends IntentService {
 
     // On définit une variable global qui sera
-    // l'id unique correspondant à notre notification (bon moi j'ai choisi ma date de naissance)
+    // l'id unique correspondant à notre notification
     public static final int ID_NOTIFICATION = 1988;
 
-    /** Called when the activity is first created. */
+    private final static String TAG = "IntentServiceNotification";
+
+    public Notifications() {
+        super(TAG);
+    }
+
+    @Override
+    protected void onHandleIntent(Intent intent){
+            createNotify();
+    }
+
+   /*
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +57,10 @@ public class Notifications extends Activity {
             }
         });
 
-    }
+    }*/
 
     //Méthode qui crée la notification
-    private void createNotify(){
+    public void createNotify(){
         //On crée un "gestionnaire de notification"
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -81,7 +95,7 @@ public class Notifications extends Activity {
     }
 
     //Méthode pour supprimer de la liste de notification la notification que l'on vient de créer
-    private void cancelNotify(){
+    public void cancelNotify(){
         //On crée notre gestionnaire de notification
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         //on supprime la notification grâce à son ID

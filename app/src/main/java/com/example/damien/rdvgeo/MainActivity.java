@@ -1,5 +1,6 @@
 package com.example.damien.rdvgeo;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     ListView mListRdv;
     List<RendezVous> mesRdv = new ArrayList<RendezVous>();
     private Button mPasserelle = null;
-    private Button addNotificationBtn;
-    private Button deleteNotificationBtn;
+    private Button testMessage;
     MySQLiteHelper mySQLiteHelper;
     private SQLiteDatabase db;
 
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
 
         mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
                 RdvGeoContract.CONSTANT.TABLE_VERSION);
@@ -84,28 +87,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addNotificationBtn = findViewById(R.id.add_notification);
-        addNotificationBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                Intent secondeActivite = new Intent(MainActivity.this, Notifications.class);
-
-                // Puis on lance l'intent !
-                startActivity(secondeActivite);
-                //Toast.makeText(getBaseContext(), "Ajout d'une notification", Toast.LENGTH_SHORT).show();
+        testMessage = findViewById(R.id.smsSend);
+        testMessage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                envoisms("5554", "Sms envoyer");
             }
         });
 
-        deleteNotificationBtn = findViewById(R.id.delete_notification);
-        deleteNotificationBtn.setOnClickListener(new View.OnClickListener() {
+    }
 
-            @Override
-            public void onClick(View arg0) {
-                Toast.makeText(getBaseContext(), "Suppression d'une notification", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+    public void envoisms(String num, String message){
+        Intent smsActivite = new Intent(MainActivity.this, SmsSend.class);
+        smsActivite.putExtra("num", num);
+        smsActivite.putExtra("message", message);
+        startService(smsActivite);
     }
 
     @Override
@@ -170,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+ /*
     public static final int NOTIFICATION_ID = 42;
 
     public void createNotification() {
@@ -189,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
         notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
+    */
 }
 
 
