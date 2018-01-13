@@ -100,4 +100,9 @@ public class RendezVousDao extends DaoBase{
         cursor.close();
         return rdvs;
     }
+
+    public void accepterRendezVous(Long id){
+        this.update(TABLE_NAME, ETAT, "accepte", id);
+
+    }
 }

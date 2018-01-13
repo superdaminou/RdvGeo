@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
+import com.example.damien.rdvgeo.Activities.MainActivity;
 import com.example.damien.rdvgeo.Activities.NotificationActivity;
 import com.example.damien.rdvgeo.R;
 
@@ -49,9 +50,18 @@ public class SmsReceiveService extends BroadcastReceiver {
 
         //Le PendingIntent c'est ce qui va nous permettre d'atteindre notre deuxième Activity
         //NotificationActivity sera donc le nom de notre seconde Activity
-        Intent i = new Intent(context, NotificationActivity.class);
-        i.putExtra("titreNotification", titreNotification);
-        i.putExtra("texteNotification", texteNotification);
+        Intent i =new Intent();
+        if(texteNotification.split("/").length ==2){
+            i = new Intent(context, MainActivity.class);
+            i.putExtra("titreNotification", titreNotification);
+            i.putExtra("texteNotification", texteNotification);
+        }else{
+            i = new Intent(context, NotificationActivity.class);
+            i.putExtra("titreNotification", titreNotification);
+            i.putExtra("texteNotification", texteNotification);
+
+        }
+
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i , PendingIntent.FLAG_UPDATE_CURRENT);
         //On définit le titre de la notification
         //titreNotification = "C'est moi la notification !";

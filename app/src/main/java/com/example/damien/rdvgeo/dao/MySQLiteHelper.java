@@ -12,14 +12,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "RdvGeo.db";
     // Commande sql pour la création de la base de données
 
-    private static final String CREATE_USER_TABLE = "create table if not exists "
-            + UserDao.TABLE_NAME+ "(" +
-            UserDao.KEY+ " INTEGER PRIMARY KEY," +
-            UserDao.USERNAME+" TEXT )";
 
-    private static final String DROP_TABLE = " drop table "+
-            UserDao.TABLE_NAME +
-            ','+
+    private static final String DROP_TABLE = " drop table if exists user, "+
             RendezVousDao.TABLE_NAME;
 
     public MySQLiteHelper(Context context) {
@@ -33,8 +27,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-
-        database.execSQL(CREATE_USER_TABLE);
         database.execSQL(RendezVousDao.TABLE_CREATE);
     }
 
@@ -43,8 +35,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE  " + UserDao.TABLE_NAME);
-        //db.execSQL("DROP TABLE  "+ RendezVousDao.TABLE_NAME);
+        db.execSQL(DROP_TABLE);
         onCreate(db);
     }
 

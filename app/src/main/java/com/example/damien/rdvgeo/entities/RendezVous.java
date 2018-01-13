@@ -91,5 +91,11 @@ public class RendezVous {
 
     public void setEtat(String etat){this.etat= etat;}
 
+    public void accepterRendezVous(Context context, Long id){
+        RendezVousDao dao= new RendezVousDao(context);
+        dao.update(RendezVousDao.TABLE_NAME, RendezVousDao.ETAT, "accepte", id );
+
+    }
+
 
 }

@@ -54,7 +54,7 @@ public class NotificationActivity extends Activity {
         //On applique un écouteur d'évènement à notre bouton "Créer une notification"
         boutonAcceptNotif.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO
+                retourNotif(rdv.getNom().toString(),"Oui", message);
             }
         });
 

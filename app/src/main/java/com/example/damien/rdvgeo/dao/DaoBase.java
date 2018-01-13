@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public abstract class DaoBase {
 
-    protected final static int VERSION =7;
+    protected final static int VERSION =8;
     // Le nom du fichier qui représente ma base
     protected final static String NOM = "RDVGEO.db";
 
@@ -66,6 +66,13 @@ public abstract class DaoBase {
         return db.query(table,
                 column, null, null, null, null, null);
 
+    }
+
+    public void update(String table, String toChange, String newValue, Long id ){
+        SQLiteDatabase db = getWriteDB();
+        String strSQL = "UPDATE " + table + " SET " + toChange+ "=" + "'" +newValue +"'"+" WHERE id = "+ id;
+
+        db.execSQL(strSQL);
     }
 
 

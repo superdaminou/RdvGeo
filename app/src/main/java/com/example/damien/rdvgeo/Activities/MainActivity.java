@@ -22,7 +22,6 @@ import com.example.damien.rdvgeo.dao.RdvGeoContract;
 import com.example.damien.rdvgeo.entities.RendezVousAdapter;
 import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.entities.RendezVous;
-import com.example.damien.rdvgeo.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,9 +56,14 @@ public class MainActivity extends AppCompatActivity {
         mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
                 RdvGeoContract.CONSTANT.TABLE_VERSION);
 
-        User test = new User("test");
-        test.createUser(MainActivity.this, 1, test.getUsername());
-
+        Intent i = getIntent();
+        Bundle bundle = i.getExtras();
+        if(bundle != null){
+            String[] message = bundle.getString("texteNotification").split("/");
+            Long id = Long.valueOf(message[0]);
+            RendezVous rdv = new RendezVous();
+            rdv.accepterRendezVous(this, id);
+        }
 
         mPasserelle = findViewById(R.id.contact);
         mPasserelle.setOnClickListener(new View.OnClickListener() {
