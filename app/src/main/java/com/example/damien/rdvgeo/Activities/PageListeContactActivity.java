@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.damien.rdvgeo.R;
 
-/**
- * Created by Nicolas on 10/01/2018.
- */
 
 public class PageListeContactActivity extends AppCompatActivity {
     @Override

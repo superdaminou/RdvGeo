@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by damien on 13/01/2018.
- */
+
 
 public abstract class ValorisationService  {
 

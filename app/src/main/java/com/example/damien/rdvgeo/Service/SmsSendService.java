@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class SmsSendService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         String num = intent.getStringExtra("num");
         String message = intent.getStringExtra("message");
+        Log.d("Send sms:","J'ai bien recu la demande ");
 
         try {
 
@@ -60,7 +62,7 @@ public class SmsSendService extends IntentService {
         sms = SmsManager.getDefault();
 
         ArrayList<String> messageParts = sms.divideMessage(strMessage);
-
+        Log.d("EnvoyerSms:","j'envoi le message");
         sms.sendMultipartTextMessage(strPhone,
                 null, messageParts,
                 null, null);

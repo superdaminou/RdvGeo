@@ -89,12 +89,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        testMessage = findViewById(R.id.smsSend);
+    /*    testMessage = findViewById(R.id.smsSend);
         testMessage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 envoisms("5554", "Sms envoyer");
             }
         });
+    */
 
     }
 

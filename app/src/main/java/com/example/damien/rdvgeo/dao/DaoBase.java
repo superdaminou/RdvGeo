@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-/**
- * Created by damien on 10/01/2018.
- */
+
 
 public abstract class DaoBase {
 

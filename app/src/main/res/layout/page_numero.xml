@@ -5,46 +5,120 @@
     android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/numeroEnvoi"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numero: "
+            android:textStyle="bold"
+            android:textColor="#FF0000"
+            android:gravity="left"
+            />
+        <EditText
+            android:id="@+id/numeroEnvoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Entrez le Numero"
+            android:inputType="phone"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contacts"/>
+    </LinearLayout>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Numero"
-        android:inputType="phone"/>
+        android:text="Lieux du rendez-vous : "
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textSize="20sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/contacts"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Latitude : "
+            android:textStyle="bold"
+            android:textColor="#FF0000"
+            android:gravity="left"
+            />
+
+        <EditText
+            android:id="@+id/lat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrez  Latitude"
+            android:inputType="numberDecimal"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="longitude : "
+            android:textStyle="bold"
+            android:textColor="#FF0000"
+            android:gravity="left"
+            />
+
+        <EditText
+            android:id="@+id/longi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrez longitude"
+            android:inputType="numberDecimal"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date : "
+            android:textStyle="bold"
+            android:textColor="#FF0000"
+            android:gravity="left"
+            />
+
+        <EditText
+            android:id="@+id/dateRdv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrez Date"
+            android:inputType="text"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contacts"/>
+        android:layout_gravity="center">
 
-    <EditText
-        android:id="@+id/lat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="latitude du rendez vous"
-        android:inputType="numberDecimal"/>
-
-    <EditText
-        android:id="@+id/longi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="longitude"
-        android:inputType="numberDecimal"/>
-
-    <EditText
-        android:id="@+id/dateRdv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Date"
-        android:inputType="date"/>
-
-    <Button
-        android:id="@+id/send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Send" />
+        <Button
+            android:id="@+id/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            />
+    </LinearLayout>
 
 </LinearLayout>
