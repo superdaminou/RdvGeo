@@ -108,17 +108,17 @@ public class PageNumeroActivity extends AppCompatActivity {
                         if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
                             String locationProvider = LocationManager.GPS_PROVIDER;
                             Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-
-                            //tampon Localisation
-                            lastKnownLocation = new Location(LOCATION_SERVICE);
-                            lastKnownLocation.setLatitude(-12);
-                            lastKnownLocation.setLongitude((24));
-
+                            String coordX = "12";
+                            String coordy = "24";
+                            if (lastKnownLocation != null) {
+                                coordX  = String.valueOf(lastKnownLocation.getLatitude());
+                                coordy = String.valueOf(lastKnownLocation.getLongitude());
+                            }
                         if(numero.getText().length()>=3){
-                            sendToOne(numero.getText().toString(), "108", "-12", dateRdv.getText().toString());
+                            sendToOne(numero.getText().toString(), coordX, coordy, dateRdv.getText().toString());
                         }else{
                             for(String numero : listContatcs){
-                                sendToOne(numero, String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
+                                sendToOne(numero, coordX, coordy, dateRdv.getText().toString());
                                 }
                             }
                         }
