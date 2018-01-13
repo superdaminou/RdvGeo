@@ -85,8 +85,7 @@ public class PageNumeroActivity extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 df = new SimpleDateFormat("dd-MM-YYYY");
-                java.util.Date myDate;
+                 df = new SimpleDateFormat("dd/MM/YYYY");
 
 
 
@@ -168,10 +167,11 @@ public class PageNumeroActivity extends AppCompatActivity {
     public void sendToOne(String numero, String lat, String longi, String date){
         Log.d("Envoyer:","Avant le try");
         try{
+            Date myDate = df.parse(date);
             RendezVous rdv= new RendezVous(numero,
                     Double.valueOf(lat),
                     Double.valueOf(longi),
-                    df.parse(date),
+                    myDate,
                     "en attente");
 
             Long id = rdv.createRdv(this,rdv);
