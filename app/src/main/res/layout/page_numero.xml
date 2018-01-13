@@ -58,7 +58,7 @@
             android:id="@+id/lat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Entrez  Latitude"
+            android:hint="Facultatif"
             android:inputType="text"
             />
     </LinearLayout>
@@ -80,7 +80,7 @@
             android:id="@+id/longi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Entrez longitude"
+            android:hint="Facultatif"
             android:inputType="text"
             />
     </LinearLayout>

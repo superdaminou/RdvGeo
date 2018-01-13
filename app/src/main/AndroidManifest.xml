@@ -48,10 +48,6 @@
             android:label="@string/title_activity_maps">
         </activity>
         <activity
-            android:name=".Activities.PageListeContactActivity"
-            android:label="contact">
-        </activity>
-        <activity
             android:name=".Activities.PageNumeroActivity"
             android:label="numero">
         </activity>

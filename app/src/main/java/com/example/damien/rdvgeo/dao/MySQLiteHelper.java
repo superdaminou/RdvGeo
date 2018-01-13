@@ -13,7 +13,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     // Commande sql pour la création de la base de données
 
 
-    private static final String DROP_TABLE = " drop table if exists user, "+
+    private static final String DROP_TABLE = " drop table  "+
             RendezVousDao.TABLE_NAME;
 
     public MySQLiteHelper(Context context) {
@@ -36,6 +36,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL(DROP_TABLE);
+        db.execSQL("drop table user;");
         onCreate(db);
     }
 
