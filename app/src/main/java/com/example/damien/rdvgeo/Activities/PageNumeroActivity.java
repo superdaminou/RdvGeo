@@ -125,6 +125,7 @@ public class PageNumeroActivity extends AppCompatActivity {
 
 
                     }catch (Exception e){
+                        e.printStackTrace();
 
                     }
 
