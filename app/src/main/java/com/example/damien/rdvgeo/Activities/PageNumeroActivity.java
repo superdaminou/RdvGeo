@@ -16,6 +16,7 @@ import android.provider.ContactsContract;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -186,11 +187,28 @@ public class PageNumeroActivity extends AppCompatActivity {
             message = id.toString()+"/"+numero +"/"+lat+"/"+longi+"/"+date+"/";
 
             Intent smsActivite = new Intent(this, SmsSendService.class);
-            smsActivite.putExtra("num", numero);
+            smsActivite.putExtra("num", getMyPhoneNO());
             smsActivite.putExtra("message", message);
             startService(smsActivite);
 
         }catch (ParseException e){
         }
+    }
+
+
+    private String getMyPhoneNO() {
+
+        String mPhoneNumber= "00000000";
+
+        ActivityCompat.requestPermissions(PageNumeroActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
+
+
+
+        if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED){
+            TelephonyManager tMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+            mPhoneNumber = tMgr.getLine1Number();
+            return mPhoneNumber;
+        }
+        return mPhoneNumber;
     }
 }
