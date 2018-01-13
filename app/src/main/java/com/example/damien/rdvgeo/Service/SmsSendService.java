@@ -1,4 +1,4 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.Service;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,13 +20,13 @@ import android.widget.Toast;
 import android.net.Uri;
 import java.util.ArrayList;
 
-public class SmsSend extends IntentService {
+public class SmsSendService extends IntentService {
 
     /** Called when the activity is first created. */
 
     private final static String TAG = "IntentServiceExample";
 
-    public SmsSend() {
+    public SmsSendService() {
         super(TAG);
     }
 

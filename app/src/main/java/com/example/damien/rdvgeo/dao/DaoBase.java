@@ -3,13 +3,7 @@ package com.example.damien.rdvgeo.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
-
-import com.example.damien.rdvgeo.MySQLiteHelper;
-
-import java.io.ObjectStreamException;
 
 /**
  * Created by damien on 10/01/2018.
@@ -17,7 +11,7 @@ import java.io.ObjectStreamException;
 
 public abstract class DaoBase {
 
-    protected final static int VERSION = 3;
+    protected final static int VERSION =7;
     // Le nom du fichier qui représente ma base
     protected final static String NOM = "RDVGEO.db";
 

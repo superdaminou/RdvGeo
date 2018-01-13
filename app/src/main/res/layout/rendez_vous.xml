@@ -28,7 +28,6 @@
         android:id="@+id/etat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nom"
         android:layout_toRightOf="@id/date"
         android:clickable="true"
         android:textColor="@android:color/black"

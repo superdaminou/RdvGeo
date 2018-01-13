@@ -34,7 +34,7 @@
 
         <uses-library android:name="com.google.android.maps" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,29 +42,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MapsActivity"
+            android:name=".Activities.MapsActivity"
             android:label="@string/title_activity_maps">
         </activity>
         <activity
-            android:name=".PageListeContact"
+            android:name=".Activities.PageListeContactActivity"
             android:label="contact">
         </activity>
         <activity
-            android:name=".PageNumero"
+            android:name=".Activities.PageNumeroActivity"
             android:label="numero">
         </activity>
         <service
-            android:name=".SmsSend"
+            android:name=".Service.SmsSendService"
             android:label="SmsSend">
         </service>
         <service
             android:name=".Notifications"
             android:label="notification">
         </service>
-        <activity android:name=".ActivityNotification"
+        <activity android:name=".Activities.NotificationActivity"
             android:label="@string/app_name" />
 
-        <receiver android:name=".SmsReceive" android:exported="true" >
+        <receiver android:name=".Service.SmsReceiveService" android:exported="true" >
             <intent-filter android:priority="2147483647" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>

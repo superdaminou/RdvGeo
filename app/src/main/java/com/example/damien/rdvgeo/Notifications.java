@@ -1,18 +1,13 @@
 package com.example.damien.rdvgeo;
 
-import android.app.Activity;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
+
+import com.example.damien.rdvgeo.Activities.NotificationActivity;
 
 public class Notifications extends IntentService {
 
@@ -69,8 +64,8 @@ public class Notifications extends IntentService {
         Notification notification = new Notification(R.drawable.icon, "Toc toc, c'est une notification !", System.currentTimeMillis());
 
         //Le PendingIntent c'est ce qui va nous permettre d'atteindre notre deuxième Activity
-        //ActivityNotification sera donc le nom de notre seconde Activity
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, ActivityNotification.class), 0);
+        //NotificationActivity sera donc le nom de notre seconde Activity
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, NotificationActivity.class), 0);
         //On définit le titre de la notification
         String titreNotification = "C'est moi la notification !";
         //On définit le texte qui caractérise la notification

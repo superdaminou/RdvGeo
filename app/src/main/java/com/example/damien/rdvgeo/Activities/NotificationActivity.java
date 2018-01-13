@@ -1,4 +1,4 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.Activities;
 
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -6,7 +6,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ActivityNotification extends Activity {
+import com.example.damien.rdvgeo.Notifications;
+
+public class NotificationActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

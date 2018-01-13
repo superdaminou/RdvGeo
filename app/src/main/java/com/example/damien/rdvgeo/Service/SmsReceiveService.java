@@ -1,4 +1,4 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.Service;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -8,10 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.widget.Toast;
+
+import com.example.damien.rdvgeo.Activities.NotificationActivity;
+import com.example.damien.rdvgeo.R;
 
 
-public class SmsReceive extends BroadcastReceiver {
+public class SmsReceiveService extends BroadcastReceiver {
     public static final int ID_NOTIFICATION = 19;
 
     @Override
@@ -45,8 +47,8 @@ public class SmsReceive extends BroadcastReceiver {
         Notification notification = new Notification(R.drawable.icon, "Toc toc, c'est une notification !", System.currentTimeMillis());
 
         //Le PendingIntent c'est ce qui va nous permettre d'atteindre notre deuxième Activity
-        //ActivityNotification sera donc le nom de notre seconde Activity
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, ActivityNotification.class), 0);
+        //NotificationActivity sera donc le nom de notre seconde Activity
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, NotificationActivity.class), 0);
         //On définit le titre de la notification
         String titreNotification = "C'est moi la notification !";
         //On définit le texte qui caractérise la notification

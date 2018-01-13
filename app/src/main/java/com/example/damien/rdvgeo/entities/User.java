@@ -2,7 +2,6 @@ package com.example.damien.rdvgeo.entities;
 
 import android.content.Context;
 
-import com.example.damien.rdvgeo.MapsActivity;
 import com.example.damien.rdvgeo.dao.UserDao;
 
 /**

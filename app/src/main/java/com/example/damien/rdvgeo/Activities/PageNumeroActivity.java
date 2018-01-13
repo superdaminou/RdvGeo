@@ -1,18 +1,20 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.damien.rdvgeo.R;
+
 /**
  * Created by Nicolas on 10/01/2018.
  */
 
-public class PageListeContact extends AppCompatActivity {
+public class PageNumeroActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.page_liste_contact);
+        setContentView(R.layout.page_numero);
 
         // On récupère l'intent qui a lancé cette activité
         Intent i = getIntent();

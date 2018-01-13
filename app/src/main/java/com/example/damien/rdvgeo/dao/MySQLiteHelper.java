@@ -1,16 +1,9 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.dao;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import com.example.damien.rdvgeo.dao.RendezVousDao;
-import com.example.damien.rdvgeo.dao.UserDao;
-import com.example.damien.rdvgeo.entities.RendezVous;
-
-import java.util.ArrayList;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 

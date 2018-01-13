@@ -1,10 +1,6 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.Activities;
 
 import android.Manifest;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -18,20 +14,16 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.damien.rdvgeo.MapsActivity;
-import com.example.damien.rdvgeo.MySQLiteHelper;
-import com.example.damien.rdvgeo.PageListeContact;
-import com.example.damien.rdvgeo.PageNumero;
+import com.example.damien.rdvgeo.dao.MySQLiteHelper;
 import com.example.damien.rdvgeo.R;
 import com.example.damien.rdvgeo.RdvGeoContract;
 import com.example.damien.rdvgeo.RendezVousAdapter;
+import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 import com.example.damien.rdvgeo.entities.User;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -54,13 +46,11 @@ public class MainActivity extends AppCompatActivity {
         mySQLiteHelper = new MySQLiteHelper(this);
 
         RendezVous rdv = new RendezVous();
-        rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12), "en attente");
+        //rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12), "en attente");
 
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
-
-<<<<<<< HEAD
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
 
         mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
@@ -69,15 +59,14 @@ public class MainActivity extends AppCompatActivity {
         User test = new User("test");
         test.createUser(MainActivity.this, 1, test.getUsername());
 
-=======
->>>>>>> origin/master
+
         mPasserelle = findViewById(R.id.contact);
         mPasserelle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Le premier paramètre est le nom de l'activité actuelle
                 // Le second est le nom de l'activité de destination
-                Intent secondeActivite = new Intent(MainActivity.this, PageListeContact.class);
+                Intent secondeActivite = new Intent(MainActivity.this, PageListeContactActivity.class);
 
                 // Puis on lance l'intent !
                 startActivity(secondeActivite);
@@ -90,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Le premier paramètre est le nom de l'activité actuelle
                 // Le second est le nom de l'activité de destination
-                Intent secondeActivite = new Intent(MainActivity.this, PageNumero.class);
+                Intent secondeActivite = new Intent(MainActivity.this, PageNumeroActivity.class);
 
                 // Puis on lance l'intent !
                 startActivity(secondeActivite);
@@ -107,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void envoisms(String num, String message){
-        Intent smsActivite = new Intent(MainActivity.this, SmsSend.class);
+        Intent smsActivite = new Intent(MainActivity.this, SmsSendService.class);
         smsActivite.putExtra("num", num);
         smsActivite.putExtra("message", message);
         startService(smsActivite);

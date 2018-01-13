@@ -35,7 +35,7 @@ public class RendezVousDao extends DaoBase{
             NAME + " TEXT," +
             COORDX + " REAL, " +
             COORDY + " REAL, " +
-            DATERDV + " TEXT " +
+            DATERDV + " TEXT, " +
             ETAT + " TEXT" +
             ") ";
 
