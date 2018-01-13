@@ -24,6 +24,7 @@ import com.example.damien.rdvgeo.entities.RendezVous;
 import com.example.damien.rdvgeo.entities.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mySQLiteHelper = new MySQLiteHelper(this);
 
         RendezVous rdv = new RendezVous();
-        //rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12), "en attente");
+        rdv.createRdv(this, "Toto", 1.2, 1.3, new Date(12,12,12), "en attente");
 
         setContentView(R.layout.activity_main);
         afficherListRdv();

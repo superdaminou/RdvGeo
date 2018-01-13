@@ -4,4 +4,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
+    <EditText
+        android:id="@+id/numeroEnvoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Numero"
+        android:inputType="phone"/>
+
+    <EditText
+        android:id="@+id/lat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="latitude du rendez vous"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/longi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="longitude"
+        android:inputType="numberDecimal"/>
+
+    <EditText
+        android:id="@+id/dateRdv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        android:inputType="date"/>
+
+    <Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Send" />
+
 </LinearLayout>

@@ -31,6 +31,7 @@ public class RendezVous {
         setCoordonneeX(coordonneeX);
         setCoordonneeY(coordonneeY);
         setDate(date);
+        setEtat(etat);
 
     }
 

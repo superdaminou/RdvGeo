@@ -68,7 +68,6 @@ public class RendezVousDao extends DaoBase{
 
     public List<RendezVous> getAllRdv(){
         DateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");
-        DateFormat targetFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         List<String> allColumns = new ArrayList<String>();
         allColumns.add(KEY);
