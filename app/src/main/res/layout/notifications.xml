@@ -3,20 +3,54 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:gravity="center"
+
     >
-    <Button
-        android:id="@+id/CreateNotif"
-        android:layout_width="fill_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Créer une notification"
-        />
-
-    <Button
-        android:id="@+id/ClearNotif"
-        android:layout_width="fill_parent"
+        android:text="Demande de rendez-vous"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/nomNotif"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Supprimer la notification"
-        />
+        android:text="Nom :" />
+    <TextView
+        android:id="@+id/prenomNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prenom :" />
+    <TextView
+        android:id="@+id/dateNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date :" />
+    <TextView
+        android:id="@+id/lieuNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lieu du rendez-vous :" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/AcceptNotif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accepter Rendez-vous"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/ClearNotif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Refuser Rendez-vous"
+            />
+    </LinearLayout>
 </LinearLayout>
