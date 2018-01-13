@@ -31,14 +31,15 @@ public class SmsReceiveService extends BroadcastReceiver {
                 String phone = smsMessage.getOriginatingAddress();
                 String message = smsMessage.getMessageBody().toString();
 
+
                 //Toast.makeText(context, phone + ": " + message, Toast.LENGTH_SHORT).show();
-                createNotify(context);
+                createNotify(context, message);
             }
         }
     }
 
     //Méthode qui crée la notification
-    private void createNotify(Context context){
+    private void createNotify(Context context, String message){
         //On crée un "gestionnaire de notification"
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 

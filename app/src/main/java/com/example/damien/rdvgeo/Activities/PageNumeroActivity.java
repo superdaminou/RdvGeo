@@ -92,7 +92,6 @@ public class PageNumeroActivity extends AppCompatActivity {
                 if (numero.getText() != null && !dateRdv.getText().toString().isEmpty()&& !lat.getText().toString().isEmpty()&& !longi.getText().toString().isEmpty()){
 
                     if(numero.getText().length()>=3){
-                        Log.d("Log:","JE suis la ");
                         sendToOne(numero.getText().toString(), lat.getText().toString(), longi.getText().toString(), dateRdv.getText().toString());
                     }else{
                         for(String numero : listContatcs){
@@ -102,20 +101,22 @@ public class PageNumeroActivity extends AppCompatActivity {
                     }
 
 
-                }else if(numero.getText() != null && dateRdv.getText() != null && (lat.getText() == null || longi.getText()== null)){
+                }else if(numero.getText() != null && !dateRdv.getText().toString().isEmpty() && (lat.getText().toString().isEmpty()|| longi.getText().toString().isEmpty())){
                     try{
 
                         ActivityCompat.requestPermissions(PageNumeroActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                         if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
-                            String locationProvider = LocationManager.NETWORK_PROVIDER;
+                            String locationProvider = LocationManager.GPS_PROVIDER;
                             Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+                        if(numero.getText().length()>=3){
+                            sendToOne(numero.getText().toString(), String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
+                        }else{
+                            for(String numero : listContatcs){
+                                sendToOne(numero, String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
+                                }
+                            }
                         }
 
-                        RendezVous rdv = new RendezVous(numero.toString(),
-                                Double.valueOf(lat.toString()),
-                                Double.valueOf(longi.toString()),
-                                df.parse(dateRdv.toString()),
-                                "en attente");
 
                     }catch (Exception e){
 
@@ -177,7 +178,7 @@ public class PageNumeroActivity extends AppCompatActivity {
             Long id = rdv.createRdv(this,rdv);
 
             String message = new String();
-            message = id.toString()+"/"+numero +"/"+lat+"/"+longi+"/"+date+"/";
+            message = id.toString()+"/"+getMyPhoneNO()+"/"+lat+"/"+longi+"/"+date+"/";
 
             Log.d("Envoyer:","j'envoi le sms");
             Intent smsActivite = new Intent(this, SmsSendService.class);
@@ -199,7 +200,7 @@ public class PageNumeroActivity extends AppCompatActivity {
 
 
 
-        if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.READ_PHONE_STATE ) == PackageManager.PERMISSION_GRANTED){
             TelephonyManager tMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
             mPhoneNumber = tMgr.getLine1Number();
             return mPhoneNumber;
