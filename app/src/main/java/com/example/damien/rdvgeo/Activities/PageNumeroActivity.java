@@ -166,7 +166,6 @@ public class PageNumeroActivity extends AppCompatActivity {
     }
 
     public void sendToOne(String numero, String lat, String longi, String date){
-        Log.d("Envoyer:","Avant le try");
         try{
             Date myDate = df.parse(date);
             RendezVous rdv= new RendezVous(numero,
@@ -180,7 +179,7 @@ public class PageNumeroActivity extends AppCompatActivity {
             String message = new String();
             message = id.toString()+"/"+getMyPhoneNO()+"/"+lat+"/"+longi+"/"+date+"/";
 
-            Log.d("Envoyer:","j'envoi le sms");
+
             Intent smsActivite = new Intent(this, SmsSendService.class);
             smsActivite.putExtra("num", getMyPhoneNO());
             smsActivite.putExtra("message", message);

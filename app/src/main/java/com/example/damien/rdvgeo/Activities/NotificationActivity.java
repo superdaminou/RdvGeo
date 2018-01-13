@@ -22,11 +22,11 @@ public class NotificationActivity extends Activity {
         notificationManager.cancel(Notifications.ID_NOTIFICATION);
 
         // On récupère nos deux boutons créés en XML grâce à leur id
-        Button boutonCreateNotif = findViewById(R.id.AcceptNotif);
+        Button boutonAcceptNotif = findViewById(R.id.AcceptNotif);
         Button boutonClearNotif = findViewById(R.id.ClearNotif);
 
         //On applique un écouteur d'évènement à notre bouton "Créer une notification"
-        boutonCreateNotif.setOnClickListener(new View.OnClickListener() {
+        boutonAcceptNotif.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO
             }

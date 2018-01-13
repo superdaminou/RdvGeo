@@ -35,7 +35,6 @@ public class SmsSendService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         String num = intent.getStringExtra("num");
         String message = intent.getStringExtra("message");
-        Log.d("Send sms:","J'ai bien recu la demande ");
 
         try {
 
@@ -50,9 +49,7 @@ public class SmsSendService extends IntentService {
             enovyerMessage(num, message);
 
         } catch (Exception ex) {
-            Toast.makeText(this,
-                    "Error in MainActivity.onCreate: " + ex.getMessage(),
-                    Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Error in MainActivity.onCreate: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -67,6 +64,6 @@ public class SmsSendService extends IntentService {
                 null, messageParts,
                 null, null);
 
-        Toast.makeText(this, "Sent.", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Sent.", Toast.LENGTH_SHORT).show();
     }
 }
