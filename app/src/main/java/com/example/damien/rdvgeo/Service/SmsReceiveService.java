@@ -31,6 +31,7 @@ public class SmsReceiveService extends BroadcastReceiver {
                 String phone = smsMessage.getOriginatingAddress();
                 String message = smsMessage.getMessageBody().toString();
 
+
                 //Toast.makeText(context, phone + ": " + message, Toast.LENGTH_SHORT).show();
                 createNotify(context, phone, message);
             }
