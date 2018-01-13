@@ -39,18 +39,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Liste de contact" />
-
-        <Button
             android:id="@+id/numero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Saisir numero" />
+            android:text="Envoyer demande" />
     </LinearLayout>
     <View
         android:layout_width="fill_parent"

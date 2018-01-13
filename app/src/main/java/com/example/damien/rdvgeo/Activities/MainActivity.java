@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     ListView mListRdv;
     List<RendezVous> mesRdv = new ArrayList<RendezVous>();
     private Button mPasserelle = null;
-    private Button testMessage;
     MySQLiteHelper mySQLiteHelper;
     private SQLiteDatabase db;
     ValorisationService valoService;
@@ -46,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         mySQLiteHelper = new MySQLiteHelper(this);
-
-        //valoService.valorisationRdv(this);
-
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
@@ -59,20 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         User test = new User("test");
         test.createUser(MainActivity.this, 1, test.getUsername());
-
-
-        mPasserelle = findViewById(R.id.contact);
-        mPasserelle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Le premier paramètre est le nom de l'activité actuelle
-                // Le second est le nom de l'activité de destination
-                Intent secondeActivite = new Intent(MainActivity.this, PageListeContactActivity.class);
-
-                // Puis on lance l'intent !
-                startActivity(secondeActivite);
-            }
-        });
 
         mPasserelle = findViewById(R.id.numero);
         mPasserelle.setOnClickListener(new View.OnClickListener() {
@@ -86,14 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(secondeActivite);
             }
         });
-
-    /*    testMessage = findViewById(R.id.smsSend);
-        testMessage.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                envoisms("5554", "Sms envoyer");
-            }
-        });
-    */
 
     }
 
