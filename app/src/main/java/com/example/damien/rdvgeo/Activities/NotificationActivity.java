@@ -5,13 +5,12 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.damien.rdvgeo.Notifications;
 import com.example.damien.rdvgeo.R;
+import com.example.damien.rdvgeo.Service.SmsReceiveService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.text.ParseException;
@@ -45,7 +44,7 @@ public class NotificationActivity extends Activity {
 
         //On supprime la notification de la liste de notification comme dans la méthode cancelNotify de l'Activity principale
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(Notifications.ID_NOTIFICATION);
+        notificationManager.cancel(SmsReceiveService.ID_NOTIFICATION);
 
         //On affiche les données de la notif
         nomNotif.setText("");

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,21 +20,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.damien.rdvgeo.R;
-import com.example.damien.rdvgeo.RdvGeoContract;
-import com.example.damien.rdvgeo.RendezVousAdapter;
 import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
-
 
 
 public class PageNumeroActivity extends AppCompatActivity {

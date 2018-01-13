@@ -1,4 +1,4 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.entities;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.damien.rdvgeo.R;
 import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.util.List;

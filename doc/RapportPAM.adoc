@@ -11,10 +11,10 @@ L'application de rendez vous gelolocalisé offre  plusieurs possibilité:
 les rendez vous programmé avec la date et leurs etats de receptions.
 * *La visualisation sur googleMap du rendez vous* permettant
 d'ouvir une googleMap au coordonnées du rendez vous
-* *La reception d'un rendezvous* envoyé par un autre utilisateur
-* *L'acceptation d'un rendezvous* pour enregistrer le rendez vous et le notifier a l'envoyeur
-* *Le refus d'un rendezvou* pour notifier l'envoyeur
-* *L'envoi d'un rendezvous* avec la position actuelle ou renseigné ainsi qu'une date.
+* *La reception d'un rendez-vous* envoyé par un autre utilisateur
+* *L'acceptation d'un rendez-vous* pour enregistrer le rendez vous et le notifier a l'envoyeur
+* *Le refus d'un rendez-vous* pour notifier l'envoyeur
+* *L'envoi d'un rendez-vous* avec la position actuelle ou renseigné ainsi qu'une date.
 
 == Architecture
 
@@ -28,4 +28,4 @@ L'architecture est decomponsé en 4 package specalisé :
 == Evolution envisageable
 
 Differentes evolution peuvent etres envisagées pour l'application, comme la mise en place d'un serveur distant permettant d'avoir une
-base de données des utilisateur
+base de données des utilisateur afin de faire evoluer la communication entre utilisateur et non entre numero de telephone;
