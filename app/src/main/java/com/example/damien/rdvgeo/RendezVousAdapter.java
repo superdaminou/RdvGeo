@@ -33,7 +33,7 @@ public class RendezVousAdapter extends ArrayAdapter<RendezVous> {
         if (viewHolder == null) {
             viewHolder = new RdvViewHolder();
             viewHolder.nom = convertView.findViewById(R.id.nom);
-            viewHolder.etat = convertView.findViewById(R.id.etat);
+            viewHolder.etat = convertView.findViewById(R.id.date);
             convertView.setTag(viewHolder);
         }
 
@@ -42,7 +42,7 @@ public class RendezVousAdapter extends ArrayAdapter<RendezVous> {
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.nom.setText(rdv.getNom());
-        viewHolder.etat.setText(rdv.getEtat());
+        viewHolder.etat.setText(rdv.getDate().toString());
 
         return convertView;
     }

@@ -35,8 +35,8 @@ public class UserRdvDao extends DaoBase {
 
     }
 
-    public void deleteUserRdv(){
-
+    public void deleteUserRdv(Long id){
+        delete(this.getClass(), id);
     }
 
     public static void changeUserRdv(String username) {

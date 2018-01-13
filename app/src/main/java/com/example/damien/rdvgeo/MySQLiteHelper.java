@@ -6,25 +6,28 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.damien.rdvgeo.dao.RendezVousDao;
 import com.example.damien.rdvgeo.dao.UserDao;
+import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.util.ArrayList;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
 
-    public static final String TABLE_COMMENTS = "comments";
-    public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_COMMENT = "comment";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "RdvGeo.db";
     // Commande sql pour la création de la base de données
 
-    private static final String DATABASE_CREATE = "create table  "
+    private static final String CREATE_USER_TABLE = "create table if not exists "
             + UserDao.TABLE_NAME+ "(" +
             UserDao.KEY+ " INTEGER PRIMARY KEY," +
             UserDao.USERNAME+" TEXT )";
 
+    private static final String DROP_TABLE = " drop table "+
+            UserDao.TABLE_NAME +
+            ','+
+            RendezVousDao.TABLE_NAME;
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -32,11 +35,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public MySQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(DATABASE_CREATE);
+
+        database.execSQL(CREATE_USER_TABLE);
+        database.execSQL(RendezVousDao.TABLE_CREATE);
     }
 
     @Override
@@ -44,7 +50,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
+        db.execSQL("DROP TABLE  " + UserDao.TABLE_NAME);
+        db.execSQL("DROP TABLE  "+ RendezVousDao.TABLE_NAME);
         onCreate(db);
     }
 

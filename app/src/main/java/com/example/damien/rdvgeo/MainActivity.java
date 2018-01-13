@@ -31,6 +31,7 @@ import com.example.damien.rdvgeo.entities.RendezVous;
 import com.example.damien.rdvgeo.entities.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -49,10 +50,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mySQLiteHelper = new MySQLiteHelper(this);
+
+        RendezVous rdv = new RendezVous();
+        rdv.createRdv(this, "test", 1.2, 1.3, new Date(12,12,12));
+
         setContentView(R.layout.activity_main);
         afficherListRdv();
         addOnClickListener();
 
+<<<<<<< HEAD
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
 
         mySQLiteHelper = new MySQLiteHelper(this, RdvGeoContract.CONSTANT.DATABASE_NAME, null,
@@ -61,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
         User test = new User("test");
         test.createUser(MainActivity.this, 1, test.getUsername());
 
+=======
+>>>>>>> origin/master
         mPasserelle = findViewById(R.id.contact);
         mPasserelle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,26 +135,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private List<RendezVous> genererRdv() {
-        List<RendezVous> rdvs = new ArrayList<RendezVous>();
-        rdvs.add(new RendezVous("Florent", "Mon premier tweet !"));
-        rdvs.add(new RendezVous("Anne", "Mon premier tweet !"));
-        rdvs.add(new RendezVous("Pat", "Mon premier tweet !"));
-        rdvs.add(new RendezVous("John", "Mon premier tweet !"));
-        return rdvs;
-    }
-
     private void afficherListRdv() {
         mListRdv = (ListView) findViewById(R.id.listRdv);
-        mesRdv = genererRdv();
+        mesRdv =RendezVous.getAll(this);
 
         RendezVousAdapter adapter = new RendezVousAdapter(this, mesRdv);
         mListRdv.setAdapter(adapter);
 
     }
 
-    private void ouvrirCarte() {
+    private void ouvrirCarte(RendezVous rdv) {
         Intent map = new Intent(this, MapsActivity.class);
+        map.putExtra("lat", rdv.getCoordonneeX());
+        map.putExtra("longi",rdv.getCoordonneeY());
         startActivity(map);
     }
 
@@ -157,8 +160,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 View itemView = view;
-
-                ouvrirCarte();
+                RendezVous rdv = (RendezVous) parent.getAdapter().getItem(position);
+                ouvrirCarte(rdv);
             }
         });
 

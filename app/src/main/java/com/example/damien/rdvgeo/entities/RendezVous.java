@@ -1,5 +1,12 @@
 package com.example.damien.rdvgeo.entities;
 
+import android.content.Context;
+
+import com.example.damien.rdvgeo.dao.RendezVousDao;
+
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by damien on 07/12/2017.
  */
@@ -8,24 +15,32 @@ public class RendezVous {
 
 
     private String nom;
-    private double[] coordonnee;
-    private String etat;
+    private double coordonneeX;
+    private double coordonneeY;
+    private Date date;
 
 
     public RendezVous() {
 
     }
 
-    public RendezVous(String nom, String etat) {
+
+    public RendezVous(String nom, double coordonneeX, double coordonneeY, Date date) {
         setNom(nom);
-        setEtat(etat);
-
+        setCoordonneeX(coordonneeX);
+        setCoordonneeY(coordonneeY);
+        setDate(date);
     }
 
-    public RendezVous(String nom, double[] coordonnee, String etat) {
-
+    public void createRdv(Context context, String nom, double coordonneeX, double coordonneeY, Date date){
+        RendezVousDao dao = new RendezVousDao(context);
+        dao.addRendezvous( nom, coordonneeX, coordonneeY, date);
     }
 
+    public static List<RendezVous> getAll(Context context){
+        RendezVousDao dao = new RendezVousDao(context);
+        return dao.getAllRdv();
+    }
 
     public String getNom() {
         return nom;
@@ -35,20 +50,28 @@ public class RendezVous {
         this.nom = nom;
     }
 
-    public double[] getCoordonnee() {
-        return coordonnee;
+    public double getCoordonneeY() {
+        return coordonneeY;
     }
 
-    public void setCoordonnee(double[] coordonnee) {
-        this.coordonnee = coordonnee;
+    public void setCoordonneeY(double coordonnee) {
+        this.coordonneeY = coordonnee;
     }
 
-    public String getEtat() {
-        return etat;
+    public double getCoordonneeX() {
+        return coordonneeX;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setCoordonneeX(double coordonnee) {
+        this.coordonneeX = coordonnee;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 
