@@ -110,11 +110,12 @@ public class PageNumeroActivity extends AppCompatActivity {
                             Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
 
                             //tampon Localisation
+                            lastKnownLocation = new Location(LOCATION_SERVICE);
                             lastKnownLocation.setLatitude(-12);
                             lastKnownLocation.setLongitude((24));
 
                         if(numero.getText().length()>=3){
-                            sendToOne(numero.getText().toString(), String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
+                            sendToOne(numero.getText().toString(), "108", "-12", dateRdv.getText().toString());
                         }else{
                             for(String numero : listContatcs){
                                 sendToOne(numero, String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
