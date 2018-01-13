@@ -32,13 +32,13 @@ public class SmsReceiveService extends BroadcastReceiver {
                 String message = smsMessage.getMessageBody().toString();
 
                 //Toast.makeText(context, phone + ": " + message, Toast.LENGTH_SHORT).show();
-                createNotify(context);
+                createNotify(context, phone, message);
             }
         }
     }
 
     //Méthode qui crée la notification
-    private void createNotify(Context context){
+    private void createNotify(Context context, String titreNotification, String texteNotification ){
         //On crée un "gestionnaire de notification"
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -48,11 +48,14 @@ public class SmsReceiveService extends BroadcastReceiver {
 
         //Le PendingIntent c'est ce qui va nous permettre d'atteindre notre deuxième Activity
         //NotificationActivity sera donc le nom de notre seconde Activity
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, NotificationActivity.class), 0);
+        Intent i = new Intent(context, NotificationActivity.class);
+        i.putExtra("titreNotification", titreNotification);
+        i.putExtra("texteNotification", texteNotification);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i , 0);
         //On définit le titre de la notification
-        String titreNotification = "C'est moi la notification !";
+        //titreNotification = "C'est moi la notification !";
         //On définit le texte qui caractérise la notification
-        String texteNotification = "Je suis une belle notification...";
+        //texteNotification = "Je suis une belle notification...";
 
         //On configure notre notification avec tous les paramètres que l'on vient de créer
         Notification.Builder builder = new Notification.Builder(context)

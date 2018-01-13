@@ -49,9 +49,7 @@ public class SmsSendService extends IntentService {
             enovyerMessage(num, message);
 
         } catch (Exception ex) {
-            Toast.makeText(this,
-                    "Error in MainActivity.onCreate: " + ex.getMessage(),
-                    Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Error in MainActivity.onCreate: " + ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
