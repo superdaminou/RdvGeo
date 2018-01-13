@@ -108,6 +108,11 @@ public class PageNumeroActivity extends AppCompatActivity {
                         if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
                             String locationProvider = LocationManager.GPS_PROVIDER;
                             Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+
+                            //tampon Localisation
+                            lastKnownLocation.setLatitude(-12);
+                            lastKnownLocation.setLongitude((24));
+
                         if(numero.getText().length()>=3){
                             sendToOne(numero.getText().toString(), String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
                         }else{
