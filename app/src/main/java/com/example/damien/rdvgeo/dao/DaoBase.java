@@ -48,14 +48,15 @@ public abstract class DaoBase {
         return helper.getWritableDatabase();
     }
 
-    public void insert(Class clazz, ContentValues values) {
+    public Long insert(Class clazz, ContentValues values) {
         SQLiteDatabase db = open();
-        db.insert(
+        Long id = db.insert(
                 clazz.getSimpleName(),
                 null,
                 values
         );
         db.close();
+        return id;
     }
 
     public void delete(Class clazz, Long id ){
@@ -68,6 +69,7 @@ public abstract class DaoBase {
                 column, null, null, null, null, null);
 
     }
+
 
 }
 

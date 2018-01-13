@@ -35,9 +35,10 @@ public class RendezVous {
 
     }
 
-    public void createRdv(Context context,RendezVous rdv){
+    public Long createRdv(Context context,RendezVous rdv){
         RendezVousDao dao = new RendezVousDao(context);
-        dao.addRendezvous( rdv.getNom(), rdv.getCoordonneeX(), rdv.getCoordonneeY(), rdv.getDate(), rdv.getEtat());
+        Long id = dao.addRendezvous( rdv.getNom(), rdv.getCoordonneeX(), rdv.getCoordonneeY(), rdv.getDate(), rdv.getEtat());
+        return id;
     }
 
     public static List<RendezVous> getAll(Context context){

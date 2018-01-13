@@ -46,7 +46,7 @@ public class RendezVousDao extends DaoBase{
 
     public RendezVousDao(Context context){super((context));}
 
-    public void addRendezvous(String nom, double coordx, double coordy, Date date, String etat){
+    public Long addRendezvous(String nom, double coordx, double coordy, Date date, String etat){
         ContentValues values = new ContentValues();
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String dateS = sdf.format(new Date());
@@ -55,7 +55,7 @@ public class RendezVousDao extends DaoBase{
         values.put(COORDY, coordy);
         values.put(DATERDV,dateS);
         values.put(ETAT,etat);
-        insert(RendezVous.class, values);
+        return insert(RendezVous.class, values);
     }
 
     public void deleteRendezvous(Long id){
@@ -65,6 +65,7 @@ public class RendezVousDao extends DaoBase{
     public static void changeRendezvous(String username) {
 
     }
+
 
     public List<RendezVous> getAllRdv(){
         DateFormat originalFormat = new SimpleDateFormat("dd-MM-yyyy");

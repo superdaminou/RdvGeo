@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.damien.rdvgeo.R;
 import com.example.damien.rdvgeo.RdvGeoContract;
 import com.example.damien.rdvgeo.RendezVousAdapter;
+import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.text.ParseException;
@@ -92,12 +93,11 @@ public class PageNumeroActivity extends AppCompatActivity {
 
                 if (numero.getText() != null && dateRdv.getText() != null && lat.getText() != null && longi.getText()!= null){
 
-                    if(numero.getText().length()>6){
+                    if(numero.getText().length()==6){
                         sendToOne(numero.getText().toString(), lat.getText().toString(), longi.getText().toString(), dateRdv.getText().toString());
                     }else{
                         for(String numero : listContatcs){
-
-                            sendToOne(numero, lat.getText().toString(), longi.getText().toString(), dateRdv.getText().toString());
+                        sendToOne(numero, lat.getText().toString(), longi.getText().toString(), dateRdv.getText().toString());
                         }
 
                     }
@@ -179,6 +179,16 @@ public class PageNumeroActivity extends AppCompatActivity {
                     Double.valueOf(longi),
                     df.parse(date),
                     "en attente");
+
+            Long id = rdv.createRdv(this,rdv);
+
+            String message = new String();
+            message = id.toString()+"/"+numero +"/"+lat+"/"+longi+"/"+date+"/";
+
+            Intent smsActivite = new Intent(this, SmsSendService.class);
+            smsActivite.putExtra("num", numero);
+            smsActivite.putExtra("message", message);
+            startService(smsActivite);
 
         }catch (ParseException e){
         }
