@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,21 +20,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.damien.rdvgeo.R;
-import com.example.damien.rdvgeo.RdvGeoContract;
-import com.example.damien.rdvgeo.RendezVousAdapter;
 import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
-
 
 
 public class PageNumeroActivity extends AppCompatActivity {
@@ -108,17 +101,17 @@ public class PageNumeroActivity extends AppCompatActivity {
                         if (ContextCompat.checkSelfPermission( PageNumeroActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
                             String locationProvider = LocationManager.GPS_PROVIDER;
                             Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-
-                            //tampon Localisation
-                            lastKnownLocation = new Location(LOCATION_SERVICE);
-                            lastKnownLocation.setLatitude(-12);
-                            lastKnownLocation.setLongitude((24));
-
+                            String coordX = "12";
+                            String coordy = "24";
+                            if (lastKnownLocation != null) {
+                                coordX  = String.valueOf(lastKnownLocation.getLatitude());
+                                coordy = String.valueOf(lastKnownLocation.getLongitude());
+                            }
                         if(numero.getText().length()>=3){
-                            sendToOne(numero.getText().toString(), "108", "-12", dateRdv.getText().toString());
+                            sendToOne(numero.getText().toString(), coordX, coordy, dateRdv.getText().toString());
                         }else{
                             for(String numero : listContatcs){
-                                sendToOne(numero, String.valueOf(lastKnownLocation.getLatitude()), String.valueOf(lastKnownLocation.getLongitude()), dateRdv.getText().toString());
+                                sendToOne(numero, coordX, coordy, dateRdv.getText().toString());
                                 }
                             }
                         }

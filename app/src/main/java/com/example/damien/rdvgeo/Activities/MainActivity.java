@@ -1,7 +1,6 @@
 package com.example.damien.rdvgeo.Activities;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,14 +18,13 @@ import android.widget.TextView;
 import com.example.damien.rdvgeo.Service.ValorisationService;
 import com.example.damien.rdvgeo.dao.MySQLiteHelper;
 import com.example.damien.rdvgeo.R;
-import com.example.damien.rdvgeo.RdvGeoContract;
-import com.example.damien.rdvgeo.RendezVousAdapter;
+import com.example.damien.rdvgeo.dao.RdvGeoContract;
+import com.example.damien.rdvgeo.entities.RendezVousAdapter;
 import com.example.damien.rdvgeo.Service.SmsSendService;
 import com.example.damien.rdvgeo.entities.RendezVous;
 import com.example.damien.rdvgeo.entities.User;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 

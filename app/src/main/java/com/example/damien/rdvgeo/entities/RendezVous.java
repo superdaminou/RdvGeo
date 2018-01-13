@@ -35,6 +35,15 @@ public class RendezVous {
 
     }
 
+    public RendezVous(String nom, Date date, String etat) {
+        setNom(nom);
+        setCoordonneeX(-12);
+        setCoordonneeY(12.4);
+        setDate(date);
+        setEtat(etat);
+
+    }
+
     public Long createRdv(Context context,RendezVous rdv){
         RendezVousDao dao = new RendezVousDao(context);
         Long id = dao.addRendezvous( rdv.getNom(), rdv.getCoordonneeX(), rdv.getCoordonneeY(), rdv.getDate(), rdv.getEtat());

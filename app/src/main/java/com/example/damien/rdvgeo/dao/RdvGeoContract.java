@@ -1,4 +1,4 @@
-package com.example.damien.rdvgeo;
+package com.example.damien.rdvgeo.dao;
 
 import android.provider.BaseColumns;
 
