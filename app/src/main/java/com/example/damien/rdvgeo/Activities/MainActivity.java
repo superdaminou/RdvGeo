@@ -1,6 +1,7 @@
 package com.example.damien.rdvgeo.Activities;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.damien.rdvgeo.Service.ValorisationService;
 import com.example.damien.rdvgeo.dao.MySQLiteHelper;
 import com.example.damien.rdvgeo.R;
 import com.example.damien.rdvgeo.RdvGeoContract;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private Button testMessage;
     MySQLiteHelper mySQLiteHelper;
     private SQLiteDatabase db;
+    ValorisationService valoService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         mySQLiteHelper = new MySQLiteHelper(this);
 
-        RendezVous rdv = new RendezVous();
-        rdv.createRdv(this, "Toto", 1.2, 1.3, new Date(12,12,12), "en attente");
+        valoService.valorisationRdv(this);
 
         setContentView(R.layout.activity_main);
         afficherListRdv();
