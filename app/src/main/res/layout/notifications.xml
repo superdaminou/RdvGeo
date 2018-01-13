@@ -16,11 +16,6 @@
         android:layout_height="wrap_content"
         android:text="Nom :" />
     <TextView
-        android:id="@+id/prenomNotif"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prenom :" />
-    <TextView
         android:id="@+id/dateNotif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
