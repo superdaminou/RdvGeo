@@ -39,6 +39,7 @@ public class NotificationActivity extends Activity {
         String message = bundle.getString("texteNotification");
 
 
+
         RendezVous rdv = getRendezVousFromNotif(message);
 
 

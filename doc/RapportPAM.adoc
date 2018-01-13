@@ -5,27 +5,28 @@ Damien Le Garrecs,  Nicolas Pietraru
 
 == Presentation
 
-L'application de rendez vous gelolocalisé offre  plusieurs possibilité:
+
+L'application de rendez-vous géolocalisé offre plusieurs possibilités :
 
 * *L'affichage des Rendez vous* qui permet de visualiser la liste de tout
-les rendez vous programmé avec la date et leurs etats de receptions.
+les rendez-vous programmés avec la date et leurs états de réceptions.
 * *La visualisation sur googleMap du rendez vous* permettant
-d'ouvir une googleMap au coordonnées du rendez vous
+d'ouvrir une googleMap au coordonnées du rendez-vous
 * *La reception d'un rendez-vous* envoyé par un autre utilisateur
-* *L'acceptation d'un rendez-vous* pour enregistrer le rendez vous et le notifier a l'envoyeur
+* *L'acceptation d'un rendez-vous* pour enregistrer le rendez vous et le notifier à l'envoyeur
 * *Le refus d'un rendez-vous* pour notifier l'envoyeur
 * *L'envoi d'un rendez-vous* avec la position actuelle ou renseigné ainsi qu'une date.
 
 == Architecture
 
-L'architecture est decomponsé en 4 package specalisé :
+L'architecture est decomposé en 3 package specialisé :
 
 * *Les activities* qui assure la gestion de l'interface
-* *Les entities* qui sont tout les objet utilsés dans l'application
-* *Les DAO* qui assure l'abstraction entre la base de données et le metier
+* *Les entities* qui sont tous les objets utilisés dans l'application
+* *Les DAO* qui assure l'abstraction entre la base de données et le métier
 
 
 == Evolution envisageable
 
-Differentes evolution peuvent etres envisagées pour l'application, comme la mise en place d'un serveur distant permettant d'avoir une
-base de données des utilisateur afin de faire evoluer la communication entre utilisateur et non entre numero de telephone;
+Différentes évolutions peuvent être envisagées pour l'application, comme la mise en place d'un serveur distant permettant d'avoir une
+base de données des utilisateurs afin de faire évoluer la communication entre utilisateur et non entre numéros de telephone;

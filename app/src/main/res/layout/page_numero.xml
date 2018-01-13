@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Entrez  Latitude"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             />
     </LinearLayout>
     <LinearLayout
@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Entrez longitude"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             />
     </LinearLayout>
 
@@ -103,7 +103,7 @@
             android:id="@+id/dateRdv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Entrez Date"
+            android:hint="dd-MM-yyyy"
             android:inputType="text"
             />
     </LinearLayout>
